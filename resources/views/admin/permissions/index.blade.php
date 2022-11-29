@@ -67,6 +67,29 @@
                         </tr> 
                     </tfoot>
                   </table>
+                  <div class="row mbm">
+                    <div class="col-sm-3">
+                        <span class="record-total" style="text-align: right;">Tổng: {{ $permissions->total() }} bản
+                            ghi</span>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <div class="pagination-panel">
+                            {{ $permissions->appends(Request::all())->onEachSide(1)->links() }}
+                        </div>
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        <span class="form-inline">
+                            Hiển thị
+                            <select name="per_page" class="form-control" data-target="#form-service-apartment">
+                                @php $list = [10, 20, 50, 100, 200]; @endphp
+                                @foreach ($list as $num)
+                                    <option value="{{ $num }}" {{ $num == @$per_page ? 'selected' : '' }}>
+                                        {{ $num }}</option>
+                                @endforeach
+                            </select>
+                        </span>
+                    </div>
+                </div>
                 </div>
                 <!-- /.box-body -->
               </div>
