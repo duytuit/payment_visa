@@ -117,7 +117,7 @@ class ProductController extends Controller
         // storage each image
         $images_product = array();
         if ($image = $request->file('image')) { 
-            dd($image);
+            //dd($image);
             foreach ($image as $files) {
                 $extension = "." . $files->getClientOriginalExtension(); 
                 $name = basename($files->getClientOriginalName(), $extension) . time();
