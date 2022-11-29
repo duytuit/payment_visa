@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home'; 
+    protected $redirectTo = '/'; 
 
     /**
      * The user has been authenticated.
@@ -42,9 +42,9 @@ class LoginController extends Controller
         $userRoles = Auth::user()->roles->pluck('name'); 
 
         if($userRoles->contains('admin')) {  
-            $this->redirectTo = '/dashboard';  
+            $this->redirectTo = 'admin/dashboard';  
         } else {
-             $this->redirectTo = '/home';    
+             $this->redirectTo = '/';    
         }
     }
 

@@ -28,7 +28,7 @@ class AdminLoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = 'admin/dashboard';
 
     /**
      * Show the application's login form.
@@ -67,7 +67,7 @@ class AdminLoginController extends Controller
         $userRoles = Auth::user()->roles->pluck('name'); 
 
         if($userRoles->contains('admin')) {  
-            $this->redirectTo = '/dashboard';  
+            $this->redirectTo = 'admin/dashboard';  
         } else { 
             Auth::logout();
             return redirect('login')->with(['message' => 'Oops! you dont have permission for this action.', 'alert-type' => 'error']);    

@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                    <p class="alert alert-danger">Access Denied! You have no permission for this action.</p>
-                   <a href="{{ url('/home') }}">Back</a>
+                   <a href="{{ url('/') }}">Back</a>
                 </div>
             </div>
         </div>

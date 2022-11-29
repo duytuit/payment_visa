@@ -41,57 +41,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            @can('admin')
-                            <li class="nav-item"> 
-                                <a class="nav-link" href="{{ route('dashboard') }}" role="button">Admin Dashboard</a>  
-                            </li>    
-                            @endcan   
-
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="width: 20rem;">
-                                    
-                                    <a href="" class="dropdown-item text-center">
-                                        <div class="profile-header bg-primary pt-3 pb-2">
-                                            <img src="{{ asset(Auth::user()->image) }}" alt="" style="width:50%;border-radius:60%;display:block;margin:auto;">
-                                            <p style="color:#fff;margin-top:15px">{{ Auth::user()->name }}</p>
-                                            <p style="color:#fff">Member since {{ Carbon\Carbon::parse(Auth::user()->created_at)->format('M, Y') }}</p>
-                                        </div>
-                                    
-                                    </a>
-                                   
-                                    <hr>
-                                    <div class="button-group text-center">
-                                    <a href="{{ route('user.profile') }}" class="btn btn-primary dropdown-item float-left" style="display:inline-block;width:60px;margin-left:15px">Profiles</a>    
-
-                                            <a class="dropdown-item btn btn-default" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();" style="display:inline-block;width:60px">
-                                                {{ __('Logout') }} 
-                                            </a>
-        
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
-                                    </div>
-                                    
-                                </div>
-                            </li>
-
-                        @endguest
                     </ul>
                 </div>
             </div>
