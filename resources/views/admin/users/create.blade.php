@@ -33,7 +33,7 @@
                     @include('admin.partials.errors') 
                     
                     @can('user-write')
-                    <form class="form-horizontal" action="{{ route('users.store') }}" method="post">
+                    <form class="form-horizontal" action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
                         @csrf 
                     
                         <div class="form-group">

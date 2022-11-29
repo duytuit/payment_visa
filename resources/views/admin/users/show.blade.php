@@ -99,7 +99,7 @@
                             <label for="image" class="col-sm-2 control-label">Profile Picture</label>
           
                             <div class="col-sm-10">
-                            <img src="{{ asset($user->image) }}" id="photo" style="margin-bottom: 8px;120px;height:100px;border-radius:5px">  
+                            <img src="{{ asset('storage/'.$user->image) }}" id="photo" style="margin-bottom: 8px;120px;height:100px;border-radius:5px">  
                             </div> 
                         </div>
     
