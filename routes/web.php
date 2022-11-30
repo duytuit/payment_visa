@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'InfoPaymentVisaController@index');
 
 // Admin Login Route 
-Route::get('/admin', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');  
-Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');  
-Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login');     
+Route::get('admin', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');  
+Route::get('admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');  
+Route::post('admin/login', 'Auth\AdminLoginController@login')->name('admin.login');     
 
 /* Auth routes with email verified */
 Auth::routes(['verify' => true]);   
