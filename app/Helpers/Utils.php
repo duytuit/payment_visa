@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Route;
 
 class Utils
 {
+    const FILE_MIME_TYPES = [
+        'jpeg',
+        'jpg',
+        'gif',
+        'png',
+        'svg'
+    ];
     const current_nationality  = [
         'AND' =>'Andorra',
         'ARG' =>'Argentina',
@@ -245,4 +252,5 @@ class Utils
 
         return $token;
     }
+    
 }

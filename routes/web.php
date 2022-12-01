@@ -6,8 +6,11 @@
 |--------------------------------------------------------------------------
 */
 
+use App\Helpers\Utils;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 
 Route::get('/', 'InfoPaymentVisaController@index');
 
@@ -93,10 +96,35 @@ Route::prefix('admin')->group(function () {
     
     });  
 });
+Route::post('payment/info', 'InfoPaymentVisaController@store')->name('payment.store');  
+
 Route::fallback(function () {
     return view('nopermission');
 });
-/** Authenticated routes for admin panel */
+
+Route::post('upload', 'UploadFileController@upload')->name('upload.store');  
+
+Route::any('captcha-test', function() {
+    if (request()->getMethod() == 'POST') {
+        $rules = ['captcha' => 'required|captcha'];
+        $validator = validator()->make(request()->all(), $rules);
+        if ($validator->fails()) {
+            echo '<p style="color: #ff0000;">Incorrect!</p>';
+        } else {
+            echo '<p style="color: #00ff30;">Matched :)</p>';
+            $sdfd = Captcha::check(request()->captcha);
+            echo  $sdfd;
+        }
+    }
+
+    $form = '<form method="post" action="captcha-test">';
+    $form .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+    $form .= '<p>' . captcha_img() . '</p>';
+    $form .= '<p><input type="text" name="captcha"></p>';
+    $form .= '<p><button type="submit" name="check">Check</button></p>';
+    $form .= '</form>';
+    return $form;
+});
    
 
 

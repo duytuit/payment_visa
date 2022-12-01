@@ -36,6 +36,7 @@
         <div class="container">
 
             <form id="valForm" class="form-horizontal">
+                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                 <div class="stepwizard">
                     <div class="stepwizard-row setup-panel">
                         <div class="stepwizard-step">
@@ -62,20 +63,12 @@
                                     <div class="span2" align="right"> Portrait photography<font color="red">*</font>
                                     </div>
                                     <div class="span2">
-                                        <div class="kv-avatar center-block" style="width: 4cm;" align="center">
+                                        <div class="kv-avatar center-block" align="center">
                                             <div class="file-input">
                                                 <div class="file-preview ">
-                                                    <div class="file-drop-disabled">
-                                                        <div class="file-preview-thumbnails">
-                                                            <div class="file-default-preview clickable" tabindex="-1">
-                                                                <img width="150px" id="anh-dai-dien-default" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC5q-0lXP6x87x-u4XGkUq6yj7qg0p4IQ0VqfBXybzkab-SWgySLiLDJbDbgff0MnYZKE&usqp=CAU" data-zoom-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC5q-0lXP6x87x-u4XGkUq6yj7qg0p4IQ0VqfBXybzkab-SWgySLiLDJbDbgff0MnYZKE&usqp=CAU">
-                                                                <h6 class="text-muted">Select</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="file-preview-status text-center text-success"></div>
-                                                        <div class="kv-fileinput-error"></div>
-                                                    </div>
+                                                    <input type="hidden" name="image_url" id="image_url">
+                                                    <input type="file" style="display: none" name="image_footer" id="image_footer" class="form-control">
+                                                    <label for="image_footer">  <img id="preview_img" src="{{ asset('images/No_Image-128.png') }}" height="190"/></label>
                                                 </div> <button type="button" tabindex="500" title="Delete to change" class="btn btn-default remove-anh-dai-dien fileinput-remove fileinput-remove-button"><img width="20" height="20" src="https://evisa.xuatnhapcanh.gov.vn/eVisa-frontend-theme/images/etrans/e_delete.png">
                                                     <span class="hidden-xs">Delete</span></button>
                                             </div>
@@ -236,7 +229,7 @@
                                     Viet Nam (number of days) <font color="red">*</font>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control input-sm" name="intended_length_of_stay_in_vn" id="intended_length_of_stay_in_vn" placeholder="Intended length of stay in Viet Nam" data-require-error="Intended length of stay in Viet Nam is required" required>
+                                    <input type="text" class="form-control input-sm" name="intended_length_of_stay_in_vn" id="intended_length_of_stay_in_vn" placeholder="Intended length of stay in Viet Nam" data-require-error="Intended length of stay in Viet Nam is required" required>
                                     <span class="popup" tabindex="0">
                                         <span>Discounts may apply if you already hold home, car or life policies with
                                             us. Discounts may apply if you already hold home, car or life policies with
@@ -253,7 +246,7 @@
                                     residential address in Viet Nam <font color="red">*</font>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control input-sm" name="intended_temporaty_residential_address_in_vn" id="intended_temporaty_residential_address_in_vn" placeholder="Intended temporary residential address in Viet Nam" data-require-error="Intended temporary residential address in Viet Nam is required" required>
+                                    <input type="text" class="form-control input-sm" name="intended_temporaty_residential_address_in_vn" id="intended_temporaty_residential_address_in_vn" placeholder="Intended temporary residential address in Viet Nam" data-require-error="Intended temporary residential address in Viet Nam is required" required>
                                     <span class="popup" tabindex="0">
                                         <span>Discounts may apply if you already hold home, car or life policies with
                                             us. Discounts may apply if you already hold home, car or life policies with
@@ -667,21 +660,22 @@
                     </section>
                     <div class="clearfix"></div>
                     <section>
-                        <div class="col-sm-6">
-
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <input type="checkbox" name="checkbox" id="checkbox5" data-require-error="Please accept terms and condition." required>
-                                <label class="text_left" for="checkbox5">I assure that I have truthfully declared all
-                                    relevant details.</label>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <img class="col-sm-4" src="{{$captcha_src}}" alt="">
+                                <div class="col-sm-8" style="margin-top: 10px;">
+                                    <input type="text" class="form-control" name="captcha">
+                                </div>
+                            </div>
+                            <div class="col-sm-6" style="margin-top: 10px;display: flex;">
+                                    <input class="col-sm-1" style="margin: 0 0 0 15px;" type="checkbox" name="checkbox" id="checkbox5">
+                                    <label class="col-sm-11 text_left" style="margin:0;" for="checkbox5">I assure that I have truthfully declared all relevant details.</label>
                             </div>
                         </div>
                     </section>
-                    <!-- <div class="col-sm-12">
-                    <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
-                </div> -->
-
+                    <div class="col-sm-12">
+                        <input type="submit" value="submit" class="btn btn-primary submit">
+                    </div>
                 </div>
                 <div class="row setup-content" id="step-2">
                     <div class="col-xs-12">
@@ -707,13 +701,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- <div class="checkboxes styled-checkbox form-group">
-                    <input type="checkbox" name="checkbox" id="checkbox5"
-                        data-require-error="Please accept terms and condition." required>
-                    <label class="col-sm-4 text_left" for="checkbox5">I agree with terms and conditions</label>
-                </div> -->
-                <input type="submit" onclick="return showLoading()" value="submit" class="btn btn-primary submit">
+               
             </form>
         </div>
     </main>
@@ -728,7 +716,78 @@
     <script src="/wp/bower_components/select2/dist/js/select2.min.js"></script>   
     <script src="/js/main.js"></script> 
     <script>
-        document.getElementById('valForm').validateForm();
+       // document.getElementById('valForm').validateForm();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+        $('.submit').click(function (e) { 
+            e.preventDefault();
+            // showLoading();
+            var form_data = new FormData($('#valForm')[0]);
+            $.ajax({
+                    url: '/payment/info',
+                    type: 'POST',
+                    data: form_data,
+                    contentType: false,
+                    processData: false, 
+                    success: function (response) {
+                        console.log(response.data);
+                        // if (response.success == true) {
+                        //     toastr.success(response.message);
+                        // } 
+                        // setTimeout(() => {
+                        //     location.reload()
+                        // }, 1000)
+                    },
+                    error: function (response){
+                        // toastr.error(response.responseJSON.errors.name[0]);
+                        // setTimeout(() => {
+                        //     location.reload()
+                        // }, 1000)
+                    }
+            });
+        });
+        $('#clear_image').click(function (e) {
+            e.preventDefault();
+            $('#preview_img').attr('src','{{ asset('images/No_Image-128.png') }}').height(190);
+            $('#image_url').val('');
+            $('#image_footer').val('')
+        });
+        $('#image_footer').on('change', function(e) {
+            var form_data = new FormData();
+            form_data.append('attach_file', e.target.files[0]);
+            if (e.target.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    console.log(e.target.result);
+                $('#preview_img').attr('src', e.target.result).height(190);
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+            e.preventDefault();
+            $.ajax({
+                url: '/upload',
+                processData: false,
+                mimeType: "multipart/form-data",
+                contentType: false,
+                type: 'POST',
+                data: form_data,
+                success: function(response) {
+                    var get_response =JSON.parse(response);
+                    if(get_response.success == true){
+                        console.log(get_response);
+                        $('#image_url').val(get_response.url);
+                    }
+                },
+                error: function (e) {
+                    $('#preview_img').attr('src','{{ asset('images/No_Image-128.png') }}').height(190);
+                    console.log(e);
+                }
+            });
+        });
+
     </script>
 </body>
 
