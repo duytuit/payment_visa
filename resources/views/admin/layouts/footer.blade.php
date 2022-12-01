@@ -18,25 +18,25 @@
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 3 -->
-<script src="{{ asset('admin/bower_components/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('wp/bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="{{ asset('admin/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('wp/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('wp/dist/js/adminlte.min.js') }}"></script>
 
 <!-- Optionally, plugins -->
 <!-- DataTables -->
-<script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('wp/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('wp/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 
-<script src="{{ asset('admin/bower_components/select2/dist/js/select2.min.js') }}"></script>  
+<script src="{{ asset('wp/bower_components/select2/dist/js/select2.min.js') }}"></script>  
 
 <!-- iCheck 1.0.1 -->
-<script src="{{ asset('admin/plugins/iCheck/icheck.min.js') }}"></script>
+<script src="{{ asset('wp/plugins/iCheck/icheck.min.js') }}"></script>
 
-<script src="{{ asset('admin/js/toastr.min.js') }}"></script>  
-<script src="{{ asset('admin/js/sweetalert.min.js') }}"></script>  
-<script src="{{ asset('admin/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script> 
+<script src="{{ asset('wp/js/toastr.min.js') }}"></script>  
+<script src="{{ asset('wp/js/sweetalert.min.js') }}"></script>  
+<script src="{{ asset('wp/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script> 
 
 
 <script>

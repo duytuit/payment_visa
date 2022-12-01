@@ -6,25 +6,25 @@
   <title>@yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="{{ asset('admin/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('wp/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('admin/bower_components/font-awesome/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('wp/bower_components/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="{{ asset('admin/bower_components/Ionicons/css/ionicons.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('wp/bower_components/Ionicons/css/ionicons.min.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('admin/dist/css/AdminLTE.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('wp/dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. -->
-  <link rel="stylesheet" href="{{ asset('admin/dist/css/skins/skin-blue.min.css') }}">  
+  <link rel="stylesheet" href="{{ asset('wp/dist/css/skins/skin-blue.min.css') }}">  
   {{-- toastr --}}
-  <link rel="stylesheet" href="{{ asset('admin/css/toastr.min.css') }}">  
+  <link rel="stylesheet" href="{{ asset('wp/css/toastr.min.css') }}">  
    <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('wp/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
   <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="{{ asset('admin/plugins/iCheck/all.css') }}">
+  <link rel="stylesheet" href="{{ asset('wp/plugins/iCheck/all.css') }}">
 
-  <link rel="stylesheet" href="{{ asset('admin/bower_components/select2/dist/css/select2.min.css') }}">  
+  <link rel="stylesheet" href="{{ asset('wp/bower_components/select2/dist/css/select2.min.css') }}">  
   <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="{{ asset('admin/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">   
+  <link rel="stylesheet" href="{{ asset('wp/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">   
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

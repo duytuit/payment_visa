@@ -15,8 +15,8 @@
 
     <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <link href="/css/easydropdown.css" rel="stylesheet">
-    <link href="/admin/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/admin/bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
+    <link href="/wp/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/wp/bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
     <link href="/css/default.css" rel="stylesheet">
 </head>
 
@@ -720,12 +720,12 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/js/jquery-3.4.1.min.js"></script>      
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/admin/bower_components/moment/moment.js"></script>   
-    <script src="/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>   
+    <script src="/wp/bower_components/moment/moment.js"></script>   
+    <script src="/wp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>   
     <script src="/js/bootstrap-datetimepicker.min.js"></script>   
     <script src="/js/form-validation.js"></script>   
     <script src="/js/jquery.easydropdown.js"></script>   
-    <script src="/admin/bower_components/select2/dist/js/select2.min.js"></script>   
+    <script src="/wp/bower_components/select2/dist/js/select2.min.js"></script>   
     <script src="/js/main.js"></script> 
     <script>
         document.getElementById('valForm').validateForm();

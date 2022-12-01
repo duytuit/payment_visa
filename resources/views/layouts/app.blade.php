@@ -51,7 +51,7 @@
 
     <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>      
     <script src="{{ asset('js/toastr.min.js') }}"></script>   
-    <script src="{{ asset('admin/js/sweetalert.min.js') }}"></script>     
+    <script src="{{ asset('wp/js/sweetalert.min.js') }}"></script>     
 
 <script>  
         @if(Session::has('message')) 
