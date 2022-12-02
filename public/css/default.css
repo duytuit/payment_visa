@@ -635,3 +635,7 @@ according to position
   .select2-container--open .select2-dropdown--below {
     width: 100%;
   }
+  /* a.disabled {
+    pointer-events: none;
+    cursor: default;
+  } */

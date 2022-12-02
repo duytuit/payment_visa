@@ -22,15 +22,6 @@ class UploadFileController extends Controller
         'png',
         'svg'
     ];
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
     public function upload(Request $request)
     {
         try {
@@ -73,5 +64,10 @@ class UploadFileController extends Controller
             return  response()->json(['success'=>false,'msg'=>$exception->getMessage()],404);
         }
 
+    }
+    public function reset_captcha(Request $request)
+    {
+        $captcha = '/captcha'.explode('captcha',captcha_src())[1] ;
+        return  response()->json(['success'=>true,'message'=>$captcha],200);
     }
 }

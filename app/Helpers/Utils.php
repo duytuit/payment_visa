@@ -243,7 +243,7 @@ class Utils
     public static function getRandom($length)
     {
         $token = "";
-        $codeAlphabet = "0123456789";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $max = strlen($codeAlphabet); // edited
 
         for ($i = 0; $i < $length; $i++) {

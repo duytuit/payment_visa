@@ -18,6 +18,7 @@
     <link href="/wp/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/wp/bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
     <link href="/css/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('wp/css/toastr.min.css') }}">  
 </head>
 
 <body>
@@ -35,20 +36,20 @@
     <main>
         <div class="container">
 
-            <form id="valForm" class="form-horizontal">
+            <form id="valForm">
                 <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                 <div class="stepwizard">
                     <div class="stepwizard-row setup-panel">
                         <div class="stepwizard-step">
-                            <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                            <a href="#step-1" type="button" class="btn btn-primary btn-circle" disabled="disabled">1</a>
                             <p>Step 1</p>
                         </div>
                         <div class="stepwizard-step">
-                            <a href="#" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                            <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
                             <p>Step 2</p>
                         </div>
                         <div class="stepwizard-step">
-                            <a href="#" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                            <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
                             <p>Step 3</p>
                         </div>
                     </div>
@@ -60,62 +61,33 @@
                         <div class="col-sm-12">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <div class="span2" align="right"> Portrait photography<font color="red">*</font>
-                                    </div>
+                                    <div class="form-group" align="left"> Portrait photography<font color="red">*</font></div>
                                     <div class="span2">
                                         <div class="kv-avatar center-block" align="center">
                                             <div class="file-input">
                                                 <div class="file-preview ">
-                                                    <input type="hidden" name="image_url" id="image_url">
-                                                    <input type="file" style="display: none" name="image_footer" id="image_footer" class="form-control">
-                                                    <label for="image_footer">  <img id="preview_img" src="{{ asset('images/No_Image-128.png') }}" height="190"/></label>
-                                                </div> <button type="button" tabindex="500" title="Delete to change" class="btn btn-default remove-anh-dai-dien fileinput-remove fileinput-remove-button"><img width="20" height="20" src="https://evisa.xuatnhapcanh.gov.vn/eVisa-frontend-theme/images/etrans/e_delete.png">
-                                                    <span class="hidden-xs">Delete</span></button>
-                                            </div>
-                                            <div id="kvFileinputModal" class="file-zoom-dialog modal fade" tabindex="-1" aria-labelledby="kvFileinputModalLabel">
-                                                <div class="modal-dialog modal-lg" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <div class="kv-zoom-actions pull-right"><button type="button" class="btn btn-default btn-header-toggle btn-toggleheader" title="Toggle header" data-toggle="button" aria-pressed="false" autocomplete="off"><i class="icon-resize-vertical"></i></button><button type="button" class="btn btn-default btn-fullscreen" title="Toggle full screen" data-toggle="button" aria-pressed="false" autocomplete="off"><i class="icon-fullscreen"></i></button><button type="button" class="btn btn-default btn-borderless" title="Toggle borderless mode" data-toggle="button" aria-pressed="false" autocomplete="off"><i class="icon-resize-full"></i></button><button type="button" class="btn btn-default btn-close" title="Close detailed preview" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button></div>
-                                                            <h3 class="modal-title">Detailed Preview <small><span class="kv-zoom-title"></span></small></h3>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="floating-buttons"></div>
-                                                            <div class="kv-zoom-body file-zoom-content"></div>
-                                                            <button type="button" class="btn btn-navigate btn-prev" title="View previous file"><i class="icon-step-backward"></i></button> <button type="button" class="btn btn-navigate btn-next" title="View next file"><i class="icon-step-forward"></i></button>
-                                                        </div>
-                                                    </div>
+                                                    <input type="hidden" name="image_avatar" id="image_avatar">
+                                                    <input type="file" style="display: none" name="image_footer" data-name="image_footer" id="image_footer" class="form-control">
+                                                    <label for="image_footer">  <img id="preview_img_avatar" src="{{ asset('images/noavatar_2x.jpeg') }}" height="190"/></label>
                                                 </div>
-                                            </div><input id="_khaithithucdientu_WAR_eVisaportlet_anhDaiDien" name="_khaithithucdientu_WAR_eVisaportlet_anhDaiDien" type="file" class="" style="display: none;">
-                                            <br>
-                                            <div id="_khaithithucdientu_WAR_eVisaportlet_valid-anhChanDung" style="color: rgb(221, 75, 57); display: none;"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="span2" align="right">
+                                <div class="form-group" align="left">
                                     Passport data page image<font color="red">*</font>
                                 </div>
-                                <div class="span4">
+                                <div class="span2">
                                     <div class="kv-avatar center-block" align="center">
                                         <div class="file-input">
                                             <div class="file-preview ">
-                                                <div class="file-drop-disabled">
-                                                    <div class="file-preview-thumbnails">
-                                                        <div class="file-default-preview clickable" tabindex="-1"><img width="300" id="anh-ho-chieu-default" src="https://bankervn.com/wp-content/uploads/2018/03/Ho-chieu-tre-em-Passport-tre-em-2022.jpg" data-zoom-image="https://bankervn.com/wp-content/uploads/2018/03/Ho-chieu-tre-em-Passport-tre-em-2022.jpg">
-                                                            <h6 class="text-muted">Select</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                    <div class="file-preview-status text-center text-success"></div>
-                                                    <div class="kv-fileinput-error"></div>
-                                                </div>
-                                            </div> <button type="button" tabindex="500" title="Delete to change" class="btn btn-default remove-anh-ho-chieu fileinput-remove fileinput-remove-button"><img width="20" height="20" src="https://evisa.xuatnhapcanh.gov.vn/eVisa-frontend-theme/images/etrans/e_delete.png">
-                                                <span class="hidden-xs">Delete</span></button>
-                                        </div><input id="_khaithithucdientu_WAR_eVisaportlet_anh-ho-chieu" name="_khaithithucdientu_WAR_eVisaportlet_anh-ho-chieu" type="file" class="" style="display: none;">
-                                        <br>
-                                        <div id="_khaithithucdientu_WAR_eVisaportlet_valid-anhHoChieu" style="color: rgb(221, 75, 57); display: none;"></div>
+                                                <input type="hidden" name="image_passport" id="image_passport">
+                                                <input type="file" style="display: none" name="image_footer_passport" data-name="image_footer_passport" id="image_footer_passport" class="form-control">
+                                                <label for="image_footer_passport">  <img id="preview_img_passport" src="{{ asset('images/passport_img.png') }}" height="190"/></label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -126,17 +98,11 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="full_name">
-                                    Full name (First name Middle name Last name) <font color="red">*</font>
+                                    Full name (First name Middle name Last name)<font color="red">*</font>
                                 </div>
 
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control input-sm" name="full_name" id="full_name" placeholder="Full Name" data-require-error="Full Name is required" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                                 <div class="row-fluid" style="color: #1a5eba; font-style: italic;"> (Use international
                                     character as in ICAO line) </div>
@@ -147,11 +113,6 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control input-sm datetimepicker" name="birthday" id="birthday" placeholder="Birthday"  data-require-error="Birthday is required" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us. Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -164,12 +125,6 @@
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -177,12 +132,6 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control input-sm" name="religion" id="religion" placeholder="Religion" data-require-error="Religion is required" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -190,10 +139,6 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control input-sm" name="permanent_residential_address" id="permanent_residential_address" placeholder="Permanent Residential Address">
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us. </span>
-                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -201,10 +146,6 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="number" class="form-control input-sm" name="passport_number" id="passport_number" placeholder="Passport Number" data-require-error="Passport Number is required" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us. </span>
-                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -213,14 +154,6 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control input-sm datetimepicker" name="expiry_date" id="expiry_date" placeholder="Expiry date" data-require-error="Expiry date is required" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us. Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
 
                             </div>
@@ -230,14 +163,6 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control input-sm" name="intended_length_of_stay_in_vn" id="intended_length_of_stay_in_vn" placeholder="Intended length of stay in Viet Nam" data-require-error="Intended length of stay in Viet Nam is required" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us. Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
 
                             </div>
@@ -247,95 +172,42 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control input-sm" name="intended_temporaty_residential_address_in_vn" id="intended_temporaty_residential_address_in_vn" placeholder="Intended temporary residential address in Viet Nam" data-require-error="Intended temporary residential address in Viet Nam is required" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us. Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
-
                             </div>
-                            <!-- <div class="form-group">
-                                    <div class="col-sm-4 text_left" for="exampleInputPassword1">Password</div>
-                                    <div class="col-sm-8">
-                                        <input type="password" class="form-control input-sm" id="exampleInputPassword1"
-                                        placeholder="Password" data-require-error="Password is required" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us. Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
-                                    </div>
-                                   
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-4 text_left" for="exampleInputMessage">Message Box</div>
-                                    <div class="col-sm-8">
-                                        <textarea class="form-control input-sm" id="exampleInputMessage"
-                                        placeholder="Type your message here" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-4 text_left" for="exampleInputNumber">Number Only</div>
-                                    <div class="col-sm-8">
-                                        <input type="number" class="form-control input-sm" id="exampleInputNumber"
-                                        placeholder="Number Only" data-require-error="Number is required" required>
-                                    </div>
-                                </div> -->
-
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <div class="col-sm-4 text_left" for="exampleName">Date of birth
-                                    (DD/MM/YYYY) <font color="red">*</font>
-                                </div>
+                                <div class="col-sm-4 text_left">Sex <font color="red">*</font> </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control input-sm" id="exampleName" placeholder="Name" pattern="[a-z]{1,15}" data-require-error="Name is required" data-pattern-error="Username should be lower case upto 15 characters" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us. Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
+                                    <div class="col-sm-6">
+                                        <label class="radio-inline"> <input type="radio" name="sex" value="1">
+                                            Male
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="sex" value="2">
+                                            Female
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="nationality_at_birth">Nationality at birth</div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control input-sm datetimepicker" name="nationality_at_birth" id="nationality_at_birth" placeholder="Nationality at birth" >
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="occupation">Occupation</div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control input-sm" name="occupation" id="occupation" placeholder="Occupation" >
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="email">Email <font color="red">* </font></div>
                                 <div class="col-sm-8">
                                     <input type="email" class="form-control input-sm" name="email" id="email" placeholder="Email address" data-require-error="Email is required" data-pattern-error="Invalid email format" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us. </span>
-                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -347,16 +219,7 @@
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us. Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
-
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="intended_date_of_entry">Intended date of entry
@@ -364,14 +227,6 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control input-sm datetimepicker" name="intended_date_of_entry" id="intended_date_of_entry" placeholder="Intended date of entry" data-require-error="Intended date of entry is required" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us. Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
 
                             </div>
@@ -385,14 +240,6 @@
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us. Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
 
                             </div>
@@ -407,12 +254,6 @@
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                             </div>
 
@@ -426,36 +267,25 @@
                                 <div class="col-sm-3 text_left" for="name_hosting_organisation">Name of hosting organisation</div>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control input-sm" name="name_hosting_organisation" id="name_hosting_organisation" placeholder="Name of hosting organisation" >
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-3 text_left" for="address">Address</div>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control input-sm" name="address" id="address" placeholder="Address" >
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                             </div>
                         </div>
                     </section>
                     <div class="clearfix"></div>
-                    <h4>Under 14 years old accompanying child(ren) included in your passport (if any)</h4>
+                    <h4>Under 14 years old accompanying child(ren) included in your passport (if any) <span><a href="javascript:;" class="add_chilrent" title="Add childrent"> <img style="" src="{{ asset('images/u51_normal.png') }}"></a> </span></h4>
                     <section>
                         <div class="col-sm-12">
                             <div class="table-responsive">
                                 <table class="table table-responsive table-bordered table-striped">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Full name (First name Middle name Last name)</th>
                                             <th>Sex</th>
                                             <th>Date of birth<br>(DD/MM/YYYY)</th>
@@ -463,125 +293,48 @@
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <!-- TRE EM 1 -->
-                                        <tr>
-                                            <!-- Ten Tre Em -->
+                                    <tbody class="list_child">
+                                        <tr class="_item_child">
+                                            <td>
+                                                <label>1</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control input-sm" name="fullname_child" placeholder="First name Middle name Last name">
+                                            </td>
                                             <td>
                                                 <div class="row-fluid">
-                                                    <div class="span4"> 1 </div>
-                                                    <div class="span8"> <input type="text" id="_khaithithucdientu_WAR_eVisaportlet_hTenTreEm1" name="_khaithithucdientu_WAR_eVisaportlet_hTenTreEm1" class="span12" value=""> </div>
-                                                </div>
-                                            </td> <!-- Gioi Tinh Tre Em -->
-                                            <td>
-                                                <div class="row-fluid">
-                                                    <div class="span6"> <label class="radio-inline"> <input type="radio" id="_khaithithucdientu_WAR_eVisaportlet_gioiTinhTreEm-nam1" name="_khaithithucdientu_WAR_eVisaportlet_gioiTinhTreEm1" value="M" checked="checked">
+                                                    <div class="span6"> 
+                                                        <label class="radio-inline"> 
+                                                           <input type="radio" class="sex_radio_child"  name="sex_child_1" value="1" checked="checked">
                                                             Male
                                                         </label>
                                                     </div>
-
                                                     <div class="span6">
                                                         <label class="radio-inline">
-                                                            <input type="radio" id="_khaithithucdientu_WAR_eVisaportlet_gioiTinhTreEm-nu1" name="_khaithithucdientu_WAR_eVisaportlet_gioiTinhTreEm1" value="F">
+                                                            <input type="radio" class="sex_radio_child" name="sex_child_1" value="2">
                                                             Female
                                                         </label>
                                                     </div>
-                                                    <div class="row-fluid" id="_khaithithucdientu_WAR_eVisaportlet_gioiTinhTreEm1-error"></div>
                                                 </div>
                                             </td>
-                                            <!-- Ngay Sinh Tre Em -->
                                             <td>
-                                                <div class="row-fluid">
-                                                    <input type="text" class="span12" id="_khaithithucdientu_WAR_eVisaportlet_ngaySinhTreEm1" placeholder="20/12/2010">
+                                                <div class="form-group">
+                                                   <input type="text" class="form-control input-sm datetimepicker" name="birthday_child"  placeholder="birthday">
                                                 </div>
                                             </td>
-                                            <!-- ANH TRE EM 1-->
                                             <td>
-                                                <div class="kv-avatar center-block" style="width: 80px; display: block; margin-left: auto; margin-right: auto" align="center">
-                                                    <div class="file-input">
-                                                        <div class="file-preview ">
-                                                            <div class="file-drop-disabled">
-                                                                <div class="file-preview-thumbnails">
-                                                                    <div class="file-default-preview clickable" tabindex="-1">
-                                                                        <img id="anh-tre-em-1-default" width="100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC5q-0lXP6x87x-u4XGkUq6yj7qg0p4IQ0VqfBXybzkab-SWgySLiLDJbDbgff0MnYZKE&usqp=CAU" data-zoom-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC5q-0lXP6x87x-u4XGkUq6yj7qg0p4IQ0VqfBXybzkab-SWgySLiLDJbDbgff0MnYZKE&usqp=CAU">
-                                                                        <h6 class="text-muted">Select</h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <div class="file-preview-status text-center text-success"></div>
-                                                                <div class="kv-fileinput-error"></div>
-                                                            </div>
-                                                        </div> <button type="button" tabindex="500" title="Delete to change" class="btn btn-default remove-anh-tre-em-1 fileinput-remove fileinput-remove-button"><img width="20" height="20" src="https://evisa.xuatnhapcanh.gov.vn/eVisa-frontend-theme/images/etrans/e_delete.png">
-                                                            <span class="hidden-xs">Delete</span></button>
-                                                    </div><input id="_khaithithucdientu_WAR_eVisaportlet_anhTreEm1" name="_khaithithucdientu_WAR_eVisaportlet_anhTreEm1" type="file" class="" style="display: none;">
-                                                </div>
-                                                <div id="_khaithithucdientu_WAR_eVisaportlet_valid-anhTreEm1" align="center" style="color: rgb(221, 75, 57); display: none;"></div>
-                                            </td>
-                                            <!-- DELETE 1-->
-                                            <td>
-                                                <div style="padding-top: 80%; padding-left: 35%;">
-                                                    <a href="javascript:void(0)" onclick="deleteTreEm1()"> <img width="20" height="20" src="https://evisa.xuatnhapcanh.gov.vn/eVisa-frontend-theme/images/etrans/e_delete.png" title="Delete"> </a>
-                                                </div><a href="javascript:void(0)" onclick="deleteTreEm1()"> </a>
-                                            </td>
-                                        </tr> <!-- TRE EM 2 -->
-                                        <tr>
-                                            <!-- Ten Tre Em 2 -->
-                                            <td>
-                                                <div class="row-fluid">
-                                                    <div class="span4"> 2 </div>
-                                                    <div class="span8"> <input type="text" id="_khaithithucdientu_WAR_eVisaportlet_hTenTreEm2" name="_khaithithucdientu_WAR_eVisaportlet_hTenTreEm2" class="span12" value=""> </div>
-                                                </div>
-                                            </td> <!-- Gioi Tinh Tre Em 2 -->
-                                            <td>
-                                                <div class="row-fluid">
-                                                    <div class="span6"> <label class="radio-inline"> <input type="radio" id="_khaithithucdientu_WAR_eVisaportlet_gioiTinhTreEm-nam2" name="_khaithithucdientu_WAR_eVisaportlet_gioiTinhTreEm2" value="M" checked="checked">
-                                                            Male
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="span6">
-                                                        <label class="radio-inline">
-                                                            <input type="radio" id="_khaithithucdientu_WAR_eVisaportlet_gioiTinhTreEm-nu2" name="_khaithithucdientu_WAR_eVisaportlet_gioiTinhTreEm2" value="F">
-                                                            Female
-                                                        </label>
-                                                    </div>
-                                                    <div class="row-fluid" id="_khaithithucdientu_WAR_eVisaportlet_gioiTinhTreEm2-error">
-                                                    </div>
+                                                <div class="file-input parent_input_file" style="text-align: center;">
+                                                        <input type="hidden" name="image_avatar_child" id="image_avatar_child_1">
+                                                        <input type="file" style="display: none" name="image_child" id="image_child_1" data-id_child="1" onchange="addImageChild(this)" class="form-control">
+                                                        <label for="image_child_1">  <img id="preview_img_avatar_child_1" src="{{ asset('images/noavatar_2x.jpeg') }}" height="190"/></label>
                                                 </div>
                                             </td>
-
-                                            <!-- Ngay Sinh Tre Em 2 -->
                                             <td>
-                                                <div class="row-fluid">
-                                                    <input type="text" class="span12" id="_khaithithucdientu_WAR_eVisaportlet_ngaySinhTreEm2" placeholder="20/12/2010">
+                                                <div class="file-input" style="text-align: center;">
+                                                    <a href="javascript:;" class="remove_item"> <img width="20" height="20" src="{{ asset('images/e_delete.png') }}" title="Delete"> </a>
                                                 </div>
                                             </td>
-                                            <!-- ANH TRE EM 2-->
-                                            <td>
-                                                <div class="kv-avatar center-block" style="width: 80px; display: block; margin-left: auto; margin-right: auto" align="center">
-                                                    <div class="file-input">
-                                                        <div class="file-preview ">
-                                                            <div class="file-drop-disabled">
-                                                                <div class="file-preview-thumbnails">
-                                                                    <div class="file-default-preview clickable" tabindex="-1">
-                                                                        <img width="100" id="anh-tre-em-2-default" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC5q-0lXP6x87x-u4XGkUq6yj7qg0p4IQ0VqfBXybzkab-SWgySLiLDJbDbgff0MnYZKE&usqp=CAU">
-                                                                        <h6 class="text-muted">Select</h6>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <div class="file-preview-status text-center text-success"></div>
-                                                                <div class="kv-fileinput-error"></div>
-                                                            </div>
-                                                        </div> <button type="button" tabindex="500" title="Delete to change" class="btn btn-default remove-anh-tre-em-2 fileinput-remove fileinput-remove-button"><img width="20" height="20" src="https://evisa.xuatnhapcanh.gov.vn/eVisa-frontend-theme/images/etrans/e_delete.png">
-                                                            <span class="hidden-xs">Delete</span></button>
-                                                    </div><input id="_khaithithucdientu_WAR_eVisaportlet_anhTreEm2" name="_khaithithucdientu_WAR_eVisaportlet_anhTreEm2" type="file" class="" style="display: none;">
-                                                </div>
-                                                <div id="_khaithithucdientu_WAR_eVisaportlet_valid-anhTreEm2" align="center" style="color: rgb(221, 75, 57); display: none;"></div>
-                                            </td>
-                                            <!-- DELETE 2-->
-                                            <td>
-                                            </td>
-                                        </tr>
+                                        </tr> 
                                     </tbody>
                                 </table>
                             </div>
@@ -595,12 +348,6 @@
                                 <div class="col-sm-5 text_left" for="grant_visa_valid_from">Grant Evisa valid from (DD/MM/YYYY) <font color="red">*</font></div>
                                 <div class="col-sm-7">
                                     <input type="text" class="form-control input-sm datetimepicker" name="grant_visa_valid_from" id="grant_visa_valid_from" placeholder="Grant Evisa valid from" data-require-error="Grant Evisa valid from is required" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -614,12 +361,6 @@
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -630,12 +371,6 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control input-sm datetimepicker" name="grant_visa_valid_to" id="grant_visa_valid_to" placeholder="To" data-require-error="To is required" required>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -648,12 +383,6 @@
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="popup" tabindex="0">
-                                        <span>Discounts may apply if you already hold home, car or life policies with
-                                            us.
-                                            Discounts may apply if you already hold home, car or life policies with
-                                            us.</span>
-                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -662,8 +391,9 @@
                     <section>
                         <div class="form-group">
                             <div class="col-sm-6">
-                                <img class="col-sm-4" src="{{$captcha_src}}" alt="">
-                                <div class="col-sm-8" style="margin-top: 10px;">
+                                <img class="col-sm-5 show_captcha" src="{{$captcha_src}}" alt="captcha">
+                                <span><a href="javascript:;" class="reset_capcha"><img width="20" height="20" src="{{ asset('images/refresh.png') }}" title="Delete"></a></span>
+                                <div class="col-sm-7" style="margin-top: 10px;">
                                     <input type="text" class="form-control" name="captcha">
                                 </div>
                             </div>
@@ -673,24 +403,254 @@
                             </div>
                         </div>
                     </section>
-                    <div class="col-sm-12">
-                        <input type="submit" value="submit" class="btn btn-primary submit">
+                    <div class="clearfix"></div>
+                    <div class="col-sm-12" style="text-align: center">
+                       <input type="submit" value="Review application form" class="btn submit" style="cursor: pointer">
                     </div>
                 </div>
                 <div class="row setup-content" id="step-2">
-                    <div class="col-xs-12">
-                        <div class="col-md-12">
-                            <h3> Step 2</h3>
-                            <div class="form-group">
-                                <label class="col-sm-4 text_left">Company Name</label>
-                                <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+                    <h4>Fulfill foreigner’s information</h4>
+                    <h5>Foreigner's images</h5>
+                    <section>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-group" align="left"> Portrait photography</div>
+                                    <div class="span2">
+                                        <div class="kv-avatar center-block" align="center">
+                                            <div class="file-input">
+                                                <div class="file-preview ">
+                                                    <label for="image_footer">  <img id="step_2_preview_img_avatar"  height="190"/></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-4 text_left">Company Address</label>
-                                <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address" />
+                            <div class="col-sm-6">
+                                <div class="form-group" align="left">
+                                    Passport data page image
+                                </div>
+                                <div class="span2">
+                                    <div class="kv-avatar center-block" align="center">
+                                        <div class="file-input">
+                                            <div class="file-preview ">
+                                                <label for="image_footer_passport">  <img id="step_2_preview_img_passport"  height="190"/></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
                         </div>
+                    </section>
+                    <h4>Personal Information(PNR)</h4>
+                    <section>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="full_name">
+                                    Full name (First name Middle name Last name)
+                                </div>
+
+                                <div class="col-sm-8">
+                                    <p class="step_2_full_name"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="birthday">Date of birth
+                                    (DD/MM/YYYY) 
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_birthday"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="nationality">Current nationality 
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_nationality"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="religion">Religion 
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_religion"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="permanent_residential_address">Permanent residential address
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_permanent_residential_address"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="passport_number">Passport number 
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_passport_number"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="expiry_date">Expiry date
+                                    (DD/MM/YYYY) 
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_expiry_date"></p>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="intended_length_of_stay_in_vn">Intended length of stay in
+                                    Viet Nam (number of days) 
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_intended_length_of_stay_in_vn"></p>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="intended_temporaty_residential_address_in_vn">Intended temporary
+                                    residential address in Viet Nam 
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_intended_temporaty_residential_address_in_vn"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left">Sex  </div>
+                                <div class="col-sm-8">
+                                    <div class="col-sm-6">
+                                        <p class="step_2_sex"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="nationality_at_birth">Nationality at birth</div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_nationality_at_birth"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="occupation">Occupation</div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_occupation"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="email">Email</div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_email"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="passport_type">Type </div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_passport_type"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="intended_date_of_entry">Intended date of entry
+                                    (DD/MM/YYYY) 
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_intended_date_of_entry"></p>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="purpose_of_entry">Purpose of entry 
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_purpose_of_entry"></p>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="city_province">City/Province </div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_city_province"></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                    <div class="clearfix"></div>
+                    <h4>Inviting/ guarentering agency/ organization (if any)</h4>
+                    <section>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-3 text_left" for="name_hosting_organisation">Name of hosting organisation</div>
+                                <div class="col-sm-9">
+                                    <p class="step_2_name_hosting_organisation"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3 text_left" for="address">Address</div>
+                                <div class="col-sm-9">
+                                    <p class="step_2_address"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clearfix"></div>
+                    <h4>Under 14 years old accompanying child(ren) included in your passport (if any)</h4>
+                    <section>
+                        <div class="col-sm-12">
+                            <div class="table-responsive">
+                                <table class="table table-responsive table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Full name (First name Middle name Last name)</th>
+                                            <th>Sex</th>
+                                            <th>Date of birth<br>(DD/MM/YYYY)</th>
+                                            <th>Portrait photography</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="step_2_list_child">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </section>
+                    <h4>Requested information</h4>
+                    <section>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="col-sm-5 text_left" for="grant_visa_valid_from">Grant Evisa valid from (DD/MM/YYYY)</div>
+                                <div class="col-sm-7">
+                                    <p class="step_2_grant_visa_valid_from"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-5 text_left" for="alowed_to_entry_throuth_checkpoint">Allowed to entry through checkpoint</div>
+                                <div class="col-sm-7">
+                                    <p class="step_2_alowed_to_entry_throuth_checkpoint"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="grant_visa_valid_to">To (DD/MM/YYYY)</div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_grant_visa_valid_to"></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="exit_throuth_checkpoint">Exit through checkpoint</div>
+                                <div class="col-sm-8">
+                                    <p class="step_2_exit_throuth_checkpoint"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-12" style="text-align: center">
+                        <button class="btn nextBtn" type="submit">Payment</button>
                     </div>
                 </div>
                 <div class="row setup-content" id="step-3">
@@ -715,17 +675,39 @@
     <script src="/js/jquery.easydropdown.js"></script>   
     <script src="/wp/bower_components/select2/dist/js/select2.min.js"></script>   
     <script src="/js/main.js"></script> 
+    <script src="{{ asset('wp/js/toastr.min.js') }}"></script>  
     <script>
-       // document.getElementById('valForm').validateForm();
+        document.getElementById('valForm').validateForm();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
             }
         });
         $('.submit').click(function (e) { 
+            $('div.setup-panel div a[href="#step-1"]').parent().next().children("a").trigger('click');
             e.preventDefault();
             // showLoading();
+            var list_child_items = [];
+            $('.list_child ._item_child').each(function(){
+                               
+                let fullname_child = $(this).find("[name='fullname_child']").val();
+                let sex_child = $(this).find('.sex_radio_child:radio:checked').val();
+                let birthday_child = $(this).find("[name='birthday_child']").val();
+                let image_avatar_child = $(this).find("[name='image_avatar_child']").val();
+                list_child_items.push({
+                        fullname_child: fullname_child,
+                        sex_child: sex_child,
+                        birthday_child: birthday_child,
+                        image_avatar_child: image_avatar_child
+                });
+              
+            })
+           
+          
             var form_data = new FormData($('#valForm')[0]);
+            if(list_child_items.length > 0){
+                form_data.append('list_child_items', JSON.stringify(list_child_items) );
+            }
             $.ajax({
                     url: '/payment/info',
                     type: 'POST',
@@ -734,15 +716,78 @@
                     processData: false, 
                     success: function (response) {
                         console.log(response.data);
-                        // if (response.success == true) {
-                        //     toastr.success(response.message);
-                        // } 
+                        if (response.status == true) {
+                            toastr.success(response.message);
+                            $('#step_2_preview_img_passport').attr('src', response.data.passport_data_page_image).height(190).width(310);
+                            $('#step_2_preview_img_avatar').attr('src', response.data.portrait_photography).height(190).width(150);
+                            $('.step_2_full_name').text(response.data.full_name);
+                            $('.step_2_birthday').text(response.data.birthday);
+                            $('.step_2_nationality').text(response.data.nationality);
+                            $('.step_2_religion').text(response.data.religion);
+                            $('.step_2_permanent_residential_address').text(response.data.permanent_residential_address);
+                            $('.step_2_passport_number').text(response.data.passport_number);
+                            $('.step_2_expiry_date').text(response.data.expiry_date);
+                            $('.step_2_intended_length_of_stay_in_vn').text(response.data.full_name);
+                            $('.step_2_intended_temporaty_residential_address_in_vn').text(response.data.intended_temporaty_residential_address_in_vn);
+                            $('.step_2_sex').text(response.data.sex);
+                            $('.step_2_nationality_at_birth').text(response.data.nationality_at_birth);
+                            $('.step_2_occupation').text(response.data.occupation);
+                            $('.step_2_email').text(response.data.email);
+                            $('.step_2_passport_type').text(response.data.passport_type);
+                            $('.step_2_intended_date_of_entry').text(response.data.intended_date_of_entry);
+                            $('.step_2_purpose_of_entry').text(response.data.purpose_of_entry);
+                            $('.step_2_city_province').text(response.data.city_province);
+                            $('.step_2_name_hosting_organisation').text(response.data.name_hosting_organisation);
+                            $('.step_2_address').text(response.data.address);
+                            $('.step_2_grant_visa_valid_from').text(response.data.grant_visa_valid_from);
+                            $('.step_2_alowed_to_entry_throuth_checkpoint').text(response.data.alowed_to_entry_throuth_checkpoint);
+                            $('.step_2_grant_visa_valid_to').text(response.data.grant_visa_valid_to);
+                            $('.step_2_exit_throuth_checkpoint').text(response.data.exit_throuth_checkpoint);
+                            if(response.data.children_14_years_old){
+                                let children_14_years_old = JSON.parse(response.data.children_14_years_old);
+                                let html = '';
+                                children_14_years_old.forEach((item,index)=>{
+                                     index=index+1;
+                                     html +=  ' <tr class="_item_child">'+
+                                                '<td>'+
+                                                '    <label>'+index+'</label>'+
+                                                '</td>'+
+                                                '<td>'+
+                                                '       <p>'+item.fullname_child+'</p>'+
+                                                '</td>'+
+                                                '<td>'+
+                                                '    <div class="row-fluid">'+
+                                                '        <div class="span6"> '+
+                                                '            <label class="radio-inline"> '+
+                                                '                <p>'+item.sex_child+'</p>'+
+                                                '            </label>'+
+                                                '        </div>'+
+                                                '    </div>'+
+                                                '</td>'+
+                                                '<td>'+
+                                                '    <div class="form-group">'+
+                                                '                <p>'+item.birthday_child+'</p>'+
+                                                '    </div>'+
+                                                '</td>'+
+                                                '<td>'+
+                                                '    <div class="file-input parent_input_file" style="text-align: center;">'+
+                                                '            <img src="'+item.image_avatar_child+'" height="190"/>'+
+                                                '    </div>'+
+                                                '</td>'+
+                                                '</tr>';
+                                })
+                                $(".step_2_list_child").append(html);
+                            }
+                            $('div.setup-panel div a[href="#step-1"]').parent().next().children("a").trigger('click');
+                        }else{
+                            toastr.error(response.message);
+                        }
                         // setTimeout(() => {
                         //     location.reload()
                         // }, 1000)
                     },
                     error: function (response){
-                        // toastr.error(response.responseJSON.errors.name[0]);
+                        toastr.warning(response.responseJSON.message);
                         // setTimeout(() => {
                         //     location.reload()
                         // }, 1000)
@@ -751,18 +796,23 @@
         });
         $('#clear_image').click(function (e) {
             e.preventDefault();
-            $('#preview_img').attr('src','{{ asset('images/No_Image-128.png') }}').height(190);
-            $('#image_url').val('');
+            $('#preview_img').attr('src','{{ asset('images/noavatar_2x.jpeg') }}').height(190);
+            $('#image_avatar').val('');
             $('#image_footer').val('')
         });
-        $('#image_footer').on('change', function(e) {
+        $('#image_footer,#image_footer_passport').on('change', function(e) {
+            let check = $(this).data('name');
+           
             var form_data = new FormData();
             form_data.append('attach_file', e.target.files[0]);
             if (e.target.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    console.log(e.target.result);
-                $('#preview_img').attr('src', e.target.result).height(190);
+                if(check == 'image_footer_passport'){
+                    $('#preview_img_passport').attr('src', e.target.result).height(190).width(310);
+                }else{
+                    $('#preview_img_avatar').attr('src', e.target.result).height(190).width(150);
+                }
                 };
                 reader.readAsDataURL(e.target.files[0]);
             }
@@ -777,17 +827,124 @@
                 success: function(response) {
                     var get_response =JSON.parse(response);
                     if(get_response.success == true){
-                        console.log(get_response);
-                        $('#image_url').val(get_response.url);
+                        if(check == 'image_footer_passport'){
+                            $('#image_passport').val(get_response.url);
+                        }else{
+                            $('#image_avatar').val(get_response.url);
+                        }
                     }
                 },
                 error: function (e) {
-                    $('#preview_img').attr('src','{{ asset('images/No_Image-128.png') }}').height(190);
                     console.log(e);
                 }
             });
         });
+        function addImageChild(element){
+            let id_child = $(element).data('id_child');
+            let file_child = element.files[0];
+            if(file_child){
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#preview_img_avatar_child_'+id_child).attr('src', reader.result).height(190).width(150);
+                };
+                reader.readAsDataURL(file_child);
 
+                var form_data = new FormData();
+                form_data.append('attach_file', file_child);
+                $.ajax({
+                url: '/upload',
+                processData: false,
+                mimeType: "multipart/form-data",
+                contentType: false,
+                type: 'POST',
+                data: form_data,
+                success: function(response) {
+                    var get_response =JSON.parse(response);
+                    if(get_response.success == true){
+                        $('#image_avatar_child_'+id_child).val(get_response.url);
+                    }
+                },
+                error: function (e) {
+                    $('#preview_img_avatar_child_'+id_child).attr('src','{{ asset('images/noavatar_2x.jpeg') }}').height(190).width(150);
+                    console.log(e);
+                }
+            });
+            }
+        }
+        var count = 1;
+        $('.add_chilrent').click(function (e) { 
+            e.preventDefault();
+            count +=1;
+            var html = ' <tr class="_item_child">'+
+                           '<td>'+
+                           '    <label>'+count+'</label>'+
+                           '</td>'+
+                           '<td>'+
+                           '    <input type="text" class="form-control input-sm" name="fullname_child" placeholder="First name Middle name Last name">'+
+                           '</td>'+
+                           '<td>'+
+                           '    <div class="row-fluid">'+
+                           '        <div class="span6"> '+
+                           '            <label class="radio-inline"> '+
+                           '                <input type="radio" class="sex_radio_child" name="sex_child_'+count+'" value="1" checked="checked">'+
+                           '                Male'+
+                           '            </label>'+
+                           '        </div>'+
+                           '        <div class="span6">'+
+                           '            <label class="radio-inline">'+
+                           '                <input type="radio" class="sex_radio_child" name="sex_child_'+count+'" value="2">'+
+                           '                Female'+
+                           '            </label>'+
+                           '        </div>'+
+                           '    </div>'+
+                           '</td>'+
+                           '<td>'+
+                           '    <div class="form-group">'+
+                           '        <input type="text" class="form-control input-sm datetimepicker" name="birthday_child"  placeholder="birthday">'+
+                           '    </div>'+
+                           '</td>'+
+                           '<td>'+
+                           '    <div class="file-input parent_input_file" style="text-align: center;">'+
+                           '            <input type="hidden" name="image_avatar_child" id="image_avatar_child_'+count+'">'+
+                           '            <input type="file" style="display: none" name="image_child" data-id_child="'+count+'" onchange="addImageChild(this)" id="image_child_'+count+'" class="form-control">'+
+                           '            <label for="image_child_'+count+'">  <img id="preview_img_avatar_child_'+count+'" src="{{ asset('images/noavatar_2x.jpeg') }}" height="190"/></label>'+
+                           '    </div>'+
+                           '</td>'+
+                           '<td>'+
+                           '    <div class="file-input" style="text-align: center;">'+
+                           '        <a href="javascript:;" class="remove_item"> <img width="20" height="20" src="{{ asset('images/e_delete.png') }}" title="Delete"> </a>'+
+                           '    </div>'+
+                           '</td>'+
+                        '</tr>';
+            $(".list_child").append(html);
+            $('.list_child ._item_child').each(function(){
+                $(this).find(".datetimepicker").datetimepicker({
+                    format: 'DD/MM/YYYY',
+                    allowInputToggle: true
+                })
+            })
+        });
+        $(".list_child").on("click", ".remove_item", function(){
+            count -=1;
+            $(this).parents("._item_child").remove();
+        });
+        $('.reset_capcha').click(function (e) { 
+            e.preventDefault();
+            $.ajax({
+                    url: '/reset/captcha',
+                    type: 'GET',
+                    success: function (response) {
+                        if (response.success == true) {
+                            $('.show_captcha').attr('src', response.message);
+                        }else{
+                            toastr.error(response.message);
+                        }
+                    },
+                    error: function (response){
+                        toastr.error(response.responseJSON.message);
+                    }
+            });
+        });
     </script>
 </body>
 

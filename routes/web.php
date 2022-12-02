@@ -103,6 +103,7 @@ Route::fallback(function () {
 });
 
 Route::post('upload', 'UploadFileController@upload')->name('upload.store');  
+Route::get('reset/captcha', 'UploadFileController@reset_captcha')->name('update.captcha');  
 
 Route::any('captcha-test', function() {
     if (request()->getMethod() == 'POST') {
