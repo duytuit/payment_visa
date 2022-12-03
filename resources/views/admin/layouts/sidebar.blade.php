@@ -55,6 +55,12 @@
       </a>
     </li>  
 
+    <li class="{{ (request()->is('info-visa')) ? 'active' : '' }}">
+      <a href="{{ route('info_visa.list') }}"><i class="fa fa-users"></i>  
+        <span>InfoVisa</span>  
+      </a>
+    </li>  
+
     <li class="treeview"> 
         <a href="#">
           <i class="fa fa-list"></i> 

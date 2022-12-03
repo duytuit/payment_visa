@@ -20,7 +20,16 @@ class InfoPaymentVisaController extends Controller
     public function __construct()
     {
     }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list()
+    {
+        $infovisas = InfoPaymentVisa::paginate(15);  
+        return view('admin.infovisa.list', compact('infovisas')); 
+    }
     /**
      * Show the application dashboard.
      *

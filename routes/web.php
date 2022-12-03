@@ -55,6 +55,7 @@ Route::prefix('admin')->group(function () {
     
         /* Category routes */          
         Route::resource('category', 'CategoryController');   
+        Route::get('info-visa', 'InfoPaymentVisaController@list')->name('info_visa.list');   
     
     
         Route::get('/media', 'MediaController@index')->name('media');      
