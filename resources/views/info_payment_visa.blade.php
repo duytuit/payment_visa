@@ -38,57 +38,30 @@
 
             <form id="valForm">
                 <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                <div class="stepwizard">
-                    <div class="stepwizard-row setup-panel">
-                        <div class="stepwizard-step">
-                            <a href="#step-1" type="button" class="btn btn-primary btn-circle" disabled="disabled">1</a>
-                            <p>Step 1</p>
-                        </div>
-                        <div class="stepwizard-step">
-                            <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-                            <p>Step 2</p>
-                        </div>
-                        <div class="stepwizard-step">
-                            <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-                            <p>Step 3</p>
-                        </div>
-                    </div>
-                </div>
+                <ul id="progressbar">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                </ul>
                 <div class="row setup-content" id="step-1">
                     <h4>Fulfill foreigner’s information</h4>
                     <h5>Foreigner's images</h5>
                     <section>
                         <div class="col-sm-12">
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    <div class="form-group" align="left"> Portrait photography<font color="red">*</font></div>
-                                    <div class="span2">
-                                        <div class="kv-avatar center-block" align="center">
-                                            <div class="file-input">
-                                                <div class="file-preview ">
-                                                    <input type="hidden" name="image_avatar" id="image_avatar">
-                                                    <input type="file" style="display: none" name="image_footer" data-name="image_footer" id="image_footer" class="form-control">
-                                                    <label for="image_footer">  <img id="preview_img_avatar" src="{{ asset('images/noavatar_2x.jpeg') }}" height="190"/></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="row text_left form-group" align="left"><span class="col-sm-12">Portrait photography<font color="red">*</font></span></div>
+                                <div class="row" align="center">
+                                    <input type="hidden" name="image_avatar" id="image_avatar">
+                                    <input type="file" style="display: none" name="image_footer" data-name="image_footer" id="image_footer" class="form-control">
+                                    <label for="image_footer">  <img id="preview_img_avatar" src="{{ asset('images/noavatar_2x.jpeg') }}" height="190"/></label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group" align="left">
-                                    Passport data page image<font color="red">*</font>
-                                </div>
-                                <div class="span2">
-                                    <div class="kv-avatar center-block" align="center">
-                                        <div class="file-input">
-                                            <div class="file-preview ">
-                                                <input type="hidden" name="image_passport" id="image_passport">
-                                                <input type="file" style="display: none" name="image_footer_passport" data-name="image_footer_passport" id="image_footer_passport" class="form-control">
-                                                <label for="image_footer_passport">  <img id="preview_img_passport" src="{{ asset('images/passport_img.png') }}" height="190"/></label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="row text_left form-group" align="left"><span class="col-sm-12">Passport data page image<font color="red">*</font></span></div>
+                                <div class="row" align="center">
+                                    <input type="hidden" name="image_passport" id="image_passport">
+                                    <input type="file" style="display: none" name="image_footer_passport" data-name="image_footer_passport" id="image_footer_passport" class="form-control">
+                                    <label for="image_footer_passport">  <img id="preview_img_passport" src="{{ asset('images/passport_img.png') }}" height="190"/></label>
                                 </div>
                             </div>
                         </div>
@@ -414,31 +387,15 @@
                     <section>
                         <div class="col-sm-12">
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    <div class="form-group" align="left"> Portrait photography</div>
-                                    <div class="span2">
-                                        <div class="kv-avatar center-block" align="center">
-                                            <div class="file-input">
-                                                <div class="file-preview ">
-                                                    <label for="image_footer">  <img id="step_2_preview_img_avatar"  height="190"/></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="row text_left form-group" align="left"><span class="col-sm-12">Portrait photography<font color="red">*</font></span></div>
+                                <div class="row" align="center">
+                                    <label for="image_footer">  <img id="step_2_preview_img_avatar"  height="190"/></label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group" align="left">
-                                    Passport data page image
-                                </div>
-                                <div class="span2">
-                                    <div class="kv-avatar center-block" align="center">
-                                        <div class="file-input">
-                                            <div class="file-preview ">
-                                                <label for="image_footer_passport">  <img id="step_2_preview_img_passport"  height="190"/></label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="row text_left form-group" align="left"><span class="col-sm-12">Passport data page image<font color="red">*</font></span></div>
+                                <div class="row" align="center">
+                                    <label for="image_footer_passport">  <img id="step_2_preview_img_passport"  height="190"/></label>
                                 </div>
                             </div>
                         </div>
@@ -619,6 +576,14 @@
                     </section>
                     <h4>Requested information</h4>
                     <section>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-5 text_left" for="step_2_registration_code">Registration code </div>
+                                <div class="col-sm-7">
+                                    <p class="step_2_registration_code"></p>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <div class="col-sm-5 text_left" for="grant_visa_valid_from">Grant Evisa valid from (DD/MM/YYYY)</div>
@@ -650,7 +615,7 @@
                     </section>
                     <div class="clearfix"></div>
                     <div class="col-sm-12" style="text-align: center">
-                        <button class="btn nextBtn" type="submit">Payment</button>
+                        <button class="btn submit" type="submit">Payment</button>
                     </div>
                 </div>
                 <div class="row setup-content" id="step-3">
@@ -684,9 +649,9 @@
             }
         });
         $('.submit').click(function (e) { 
-            $('div.setup-panel div a[href="#step-1"]').parent().next().children("a").trigger('click');
+           
             e.preventDefault();
-            // showLoading();
+            showLoading();
             var list_child_items = [];
             $('.list_child ._item_child').each(function(){
                                
@@ -715,11 +680,13 @@
                     contentType: false,
                     processData: false, 
                     success: function (response) {
+                        hideLoading();
                         console.log(response.data);
                         if (response.status == true) {
                             toastr.success(response.message);
                             $('#step_2_preview_img_passport').attr('src', response.data.passport_data_page_image).height(190).width(310);
                             $('#step_2_preview_img_avatar').attr('src', response.data.portrait_photography).height(190).width(150);
+                            $('.step_2_registration_code').text(response.data.code);
                             $('.step_2_full_name').text(response.data.full_name);
                             $('.step_2_birthday').text(response.data.birthday);
                             $('.step_2_nationality').text(response.data.nationality);
@@ -778,7 +745,7 @@
                                 })
                                 $(".step_2_list_child").append(html);
                             }
-                            $('div.setup-panel div a[href="#step-1"]').parent().next().children("a").trigger('click');
+                            nextForm(this);
                         }else{
                             toastr.error(response.message);
                         }
@@ -787,6 +754,7 @@
                         // }, 1000)
                     },
                     error: function (response){
+                        hideLoading();
                         toastr.warning(response.responseJSON.message);
                         // setTimeout(() => {
                         //     location.reload()

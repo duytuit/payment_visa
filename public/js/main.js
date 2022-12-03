@@ -4,46 +4,7 @@ $( document ).ready(function() {
     $('select.select2').select2({
         language: 'en',
     });
-    var navListItems = $('div.setup-panel div a'),
-    allWells = $('.setup-content'),
-    allNextBtn = $('.nextBtn');
-
-    allWells.hide();
-
-    navListItems.click(function (e) {
-    e.preventDefault();
-    var $target = $($(this).attr('href')),
-            $item = $(this);
-
-    if (!$item.hasClass('disabled')) {
-        navListItems.removeClass('btn-primary').addClass('btn-default');
-        $item.addClass('btn-primary');
-        allWells.hide();
-        $target.show();
-        $target.find('input:eq(0)').focus();
-    }
-    });
-
-    allNextBtn.click(function(){
-    var curStep = $(this).closest(".setup-content"),
-        curStepBtn = curStep.attr("id"),
-        nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-        curInputs = curStep.find("input[type='text'],input[type='url']"),
-        isValid = true;
-
-    $(".form-group").removeClass("has-error");
-    for(var i=0; i<curInputs.length; i++){
-        if (!curInputs[i].validity.valid){
-            isValid = false;
-            $(curInputs[i]).closest(".form-group").addClass("has-error");
-        }
-    }
-
-    if (isValid)
-        nextStepWizard.removeAttr('disabled').trigger('click');
-    });
-
-    $('div.setup-panel div a.btn-primary').trigger('click');
+    
     // Vertically centered popup message based on height
 
     $('span.popup').each(function () {
@@ -82,18 +43,6 @@ $( document ).ready(function() {
         format: 'DD/MM/YYYY',
         allowInputToggle: true
     });
-
-    /*$('.input-group-addon').keypress(function (e) {
-        if (e.keyCode == 13) { // return[enter] key maps to keycode `13`
-            //don't expand select dropdown if enter key is pressed
-            //return false;
-
-            $('#datetimepicker').datetimepicker({
-                allowInputToggle: true
-            });
-
-        }
-    });*/
 
     styleDropdowns();
 
@@ -183,3 +132,30 @@ function showLoading(){
 function hideLoading(){
     $("#fade_overlay").hide();
 }
+
+var current_fs, next_fs, previous_fs; //sections
+var left, opacity, scale; //section properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
+
+function nextForm(selector){
+	current_fs = $(selector).parent().parent();
+	next_fs = $(selector).parent().parent().next();
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($(".setup-content").index(next_fs)).addClass("active");
+	
+	//show the next section
+	next_fs.show(); 
+	current_fs.hide();
+};
+
+function previousForm(selector){
+	current_fs = $(selector).parent().parent();
+	previous_fs = $(selector).parent().parent().prev();
+	
+	//de-activate current step on progressbar
+	$("#progressbar li").eq($(".setup-content").index(current_fs)).removeClass("active");
+	
+	//show the previous section
+	previous_fs.show(); 
+	current_fs.hide();
+};

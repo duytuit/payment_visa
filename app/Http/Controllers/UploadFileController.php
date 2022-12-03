@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Intervention\Image\Exception\ImageException;
+use Intervention\Image\Facades\Image;
 
 class UploadFileController extends Controller
 {
@@ -42,8 +44,15 @@ class UploadFileController extends Controller
             $check = in_array(strtolower($extension), self::FILE_MIME_TYPES);
             if ($check) {
                 $fileName = strtolower($files->getClientOriginalName());
-                $files->move(public_path('images/'), $fileName);
+                $width   = request('width', 768);
+                $height  = request('height', 512);
+                $img = Image::make($files)
+                ->resize($width, $height)
+                ->save(public_path('images/'). $fileName);
                 $urlFile = '/images/' . $fileName;
+                // $fileName = strtolower($files->getClientOriginalName());
+                // $files->move(public_path('images/'), $fileName);
+                // $urlFile = '/images/' . $fileName;
             } else {
                 return  response()->json(['success' => false, 'msg' => 'File Không đúng định dạng jpeg, jpg, gif, png, svg,'], 404);
             }

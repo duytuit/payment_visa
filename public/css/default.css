@@ -639,3 +639,75 @@ according to position
     pointer-events: none;
     cursor: default;
   } */
+  /* #valForm .setup-content {
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 100%;
+    position: absolute;
+  } */
+  /*Hide all except first section*/
+  #valForm .setup-content:not(:first-of-type) {
+    display: none;
+  }
+  /*progressbar*/
+  #progressbar {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+    padding: 0;
+  }
+  #progressbar li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: calc(100%/3);
+    float: left;
+    position: relative;
+  }
+
+  #progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    line-height: 30px;
+    display: block;
+    font-size: 14px;
+    color: #333;
+    background: white;
+    border-radius: 3px;
+    margin: 0 auto 5px auto;
+    text-align: center;
+    border: 1px solid #cccccc;
+  }
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 14px;
+    z-index: -1
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before,  #progressbar li.active:after{
+	background: #27AE60;
+	color: white;
+}
+  @media (max-width: 576px){
+    #preview_img_passport #step_2_preview_img_passport{
+      width: 282px !important;
+      height: 190px !important;
+      object-fit: contain;
+    }
+  }
