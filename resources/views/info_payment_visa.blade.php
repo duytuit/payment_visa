@@ -17,7 +17,7 @@
     <link href="/css/easydropdown.css" rel="stylesheet">
     <link href="/wp/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/wp/bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
-    <link href="/css/default.css" rel="stylesheet">
+    <link href="/css/default.css?v=3" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('wp/css/toastr.min.css') }}">  
 </head>
 
@@ -578,8 +578,8 @@
                     <section>
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <div class="col-sm-5 text_left" for="step_2_registration_code">Registration code </div>
-                                <div class="col-sm-7">
+                                <div class="col-sm-2 text_left" for="step_2_registration_code">Registration code </div>
+                                <div class="col-sm-2">
                                     <p class="step_2_registration_code"></p>
                                 </div>
                             </div>
@@ -615,15 +615,13 @@
                     </section>
                     <div class="clearfix"></div>
                     <div class="col-sm-12" style="text-align: center">
-                        <button class="btn submit" type="submit">Payment</button>
+                        <button class="btn next" type="submit">Payment</button>
                     </div>
                 </div>
                 <div class="row setup-content" id="step-3">
-                    <div class="col-xs-12">
-                        <div class="col-md-12">
-                            <h3> Step 3</h3>
-                            <button class="btn btn-success btn-lg pull-right" type="submit">Finish!</button>
-                        </div>
+                    <div class="col-md-12">
+                        <h3> Step 3</h3>
+                        <button class="btn btn-success btn-lg pull-right" type="submit">Finish!</button>
                     </div>
                 </div>
                
@@ -639,7 +637,7 @@
     <script src="/js/form-validation.js"></script>   
     <script src="/js/jquery.easydropdown.js"></script>   
     <script src="/wp/bower_components/select2/dist/js/select2.min.js"></script>   
-    <script src="/js/main.js"></script> 
+    <script src="/js/main.js?v=3"></script> 
     <script src="{{ asset('wp/js/toastr.min.js') }}"></script>  
     <script>
         document.getElementById('valForm').validateForm();
@@ -649,7 +647,7 @@
             }
         });
         $('.submit').click(function (e) { 
-           
+            let selecter = this;
             e.preventDefault();
             showLoading();
             var list_child_items = [];
@@ -682,6 +680,7 @@
                     success: function (response) {
                         hideLoading();
                         console.log(response.data);
+                      
                         if (response.status == true) {
                             toastr.success(response.message);
                             $('#step_2_preview_img_passport').attr('src', response.data.passport_data_page_image).height(190).width(310);
@@ -745,10 +744,10 @@
                                 })
                                 $(".step_2_list_child").append(html);
                             }
-                            nextForm(this);
                         }else{
                             toastr.error(response.message);
                         }
+                        nextForm(selecter);
                         // setTimeout(() => {
                         //     location.reload()
                         // }, 1000)
@@ -761,6 +760,10 @@
                         // }, 1000)
                     }
             });
+        });
+        $('.next').click(function (e) { 
+            e.preventDefault();
+            nextForm(this);
         });
         $('#clear_image').click(function (e) {
             e.preventDefault();
