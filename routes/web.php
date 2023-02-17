@@ -82,7 +82,7 @@ Route::prefix('admin')->group(function () {
     
         /* product routes */  
         Route::resource('attribute', 'AttributeController');         
-        Route::resource('option', 'OptionController');          
+        // Route::resource('option', 'OptionController');          
         Route::resource('product', 'ProductController');        
         Route::resource('tax', 'TaxController');           
       
@@ -98,6 +98,8 @@ Route::prefix('admin')->group(function () {
     });  
 });
 Route::post('payment/info', 'InfoPaymentVisaController@store')->name('payment.store');  
+Route::post('transaction/payment', 'InfoPaymentVisaController@payment')->name('transaction.payment');  
+Route::get('transaction/result', 'InfoPaymentVisaController@callback')->name('transaction.callback');  
 
 Route::fallback(function () {
     return view('nopermission');

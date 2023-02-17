@@ -711,3 +711,45 @@ according to position
       object-fit: contain;
     }
   }
+.vcb div.panel-collapse {
+    padding: 6px 36px;
+}
+ul.cardList {
+  list-style-position: outside;
+  list-style-type: none;
+  margin: 0px 0px 0px -8px;
+  padding: 0px 0 5px 0px;
+}
+ul.cardList li {
+  width: 115px;
+  height: 60px;
+  cursor: pointer;
+  float: left;
+  text-align: center;
+  margin-left: 8px;
+  position: relative;
+  margin-bottom: 10px;
+}
+ul.cardList li .boxWrap {
+  padding: 2px;
+  margin: 0px;
+  border-radius: 0px;
+}
+.boxWrap {
+  height: 100%;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  margin-bottom: 30px;
+}
+ul.cardList li a {
+  color: inherit;
+}
+ul.cardList li:hover .boxWrap {
+  border-color: #AAAAAA #AAAAAA #666666;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 70%), 0 0 3px #ffffff inset;
+}
+@media only screen and (min-width: 1310px) and (max-width: 1494px){
+  ul.cardList li {
+      width: 15.5%;
+  }
+}

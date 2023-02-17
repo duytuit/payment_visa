@@ -51,7 +51,7 @@
                             <div class="col-sm-6">
                                 <div class="row text_left form-group" align="left"><span class="col-sm-12">Portrait photography<font color="red">*</font></span></div>
                                 <div class="row" align="center">
-                                    <input type="hidden" name="image_avatar" id="image_avatar">
+                                    <input type="hidden" name="image_avatar" id="image_avatar" value="/images/z3661741009497_f2c8a815234ecad0739d9a87849b5f44.jpg">
                                     <input type="file" style="display: none" name="image_footer" data-name="image_footer" id="image_footer" class="form-control">
                                     <label for="image_footer">  <img id="preview_img_avatar" src="{{ asset('images/noavatar_2x.jpeg') }}" height="190"/></label>
                                 </div>
@@ -59,7 +59,7 @@
                             <div class="col-sm-6">
                                 <div class="row text_left form-group" align="left"><span class="col-sm-12">Passport data page image<font color="red">*</font></span></div>
                                 <div class="row" align="center">
-                                    <input type="hidden" name="image_passport" id="image_passport">
+                                    <input type="hidden" name="image_passport" id="image_passport" value="/images/ho-chieu-tre-em-passport-tre-em-2022.jpg">
                                     <input type="file" style="display: none" name="image_footer_passport" data-name="image_footer_passport" id="image_footer_passport" class="form-control">
                                     <label for="image_footer_passport">  <img id="preview_img_passport" src="{{ asset('images/passport_img.png') }}" height="190"/></label>
                                 </div>
@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control input-sm" name="full_name" id="full_name" placeholder="Full Name" data-require-error="Full Name is required" required>
+                                    <input type="text" class="form-control input-sm" name="full_name" id="full_name" placeholder="Full Name" value="nguyễn duy tú" data-require-error="Full Name is required" required>
                                 </div>
                                 <div class="row-fluid" style="color: #1a5eba; font-style: italic;"> (Use international
                                     character as in ICAO line) </div>
@@ -85,7 +85,7 @@
                                     (DD/MM/YYYY) <font color="red">*</font>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control input-sm datetimepicker" name="birthday" id="birthday" placeholder="Birthday"  data-require-error="Birthday is required" required>
+                                    <input type="text" class="form-control input-sm datetimepicker" name="birthday" id="birthday" value="2022-12-09" placeholder="Birthday"  data-require-error="Birthday is required" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <select class="form-control input-sm select2" name="nationality" id="nationality" placeholder="Nationality"  data-require-error="Nationality is required" required>
-                                            <option value="">[Choose nationality]</option>
+                                            <option value="AUT" selected>[Choose nationality]</option>
                                         @foreach ($current_nationality as $key =>  $value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
@@ -104,21 +104,21 @@
                                 <div class="col-sm-4 text_left" for="religion">Religion <font color="red">*</font>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control input-sm" name="religion" id="religion" placeholder="Religion" data-require-error="Religion is required" required>
+                                    <input type="text" class="form-control input-sm" name="religion" value="không" id="religion" placeholder="Religion" data-require-error="Religion is required" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="permanent_residential_address">Permanent residential address
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control input-sm" name="permanent_residential_address" id="permanent_residential_address" placeholder="Permanent Residential Address">
+                                    <input type="text" class="form-control input-sm" name="permanent_residential_address" value="hà nội" id="permanent_residential_address" placeholder="Permanent Residential Address">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="passport_number">Passport number <font color="red">*</font>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="number" class="form-control input-sm" name="passport_number" id="passport_number" placeholder="Passport Number" data-require-error="Passport Number is required" required>
+                                    <input type="number" class="form-control input-sm" name="passport_number" value="236783264837" id="passport_number" placeholder="Passport Number" data-require-error="Passport Number is required" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -126,7 +126,7 @@
                                     (DD/MM/YYYY) <font color="red">*</font>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control input-sm datetimepicker" name="expiry_date" id="expiry_date" placeholder="Expiry date" data-require-error="Expiry date is required" required>
+                                    <input type="text" class="form-control input-sm datetimepicker" name="expiry_date" value="2023-04-03" id="expiry_date" placeholder="Expiry date" data-require-error="Expiry date is required" required>
                                 </div>
 
                             </div>
@@ -135,7 +135,7 @@
                                     Viet Nam (number of days) <font color="red">*</font>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control input-sm" name="intended_length_of_stay_in_vn" id="intended_length_of_stay_in_vn" placeholder="Intended length of stay in Viet Nam" data-require-error="Intended length of stay in Viet Nam is required" required>
+                                    <input type="text" class="form-control input-sm" name="intended_length_of_stay_in_vn" value="21" id="intended_length_of_stay_in_vn" placeholder="Intended length of stay in Viet Nam" data-require-error="Intended length of stay in Viet Nam is required" required>
                                 </div>
 
                             </div>
@@ -144,7 +144,7 @@
                                     residential address in Viet Nam <font color="red">*</font>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control input-sm" name="intended_temporaty_residential_address_in_vn" id="intended_temporaty_residential_address_in_vn" placeholder="Intended temporary residential address in Viet Nam" data-require-error="Intended temporary residential address in Viet Nam is required" required>
+                                    <input type="text" class="form-control input-sm" name="intended_temporaty_residential_address_in_vn" value="hà nội" id="intended_temporaty_residential_address_in_vn" placeholder="Intended temporary residential address in Viet Nam" data-require-error="Intended temporary residential address in Viet Nam is required" required>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +153,7 @@
                                 <div class="col-sm-4 text_left">Sex <font color="red">*</font> </div>
                                 <div class="col-sm-8">
                                     <div class="col-sm-6">
-                                        <label class="radio-inline"> <input type="radio" name="sex" value="1">
+                                        <label class="radio-inline"> <input type="radio" name="sex" checked value="1">
                                             Male
                                         </label>
                                     </div>
@@ -168,26 +168,26 @@
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="nationality_at_birth">Nationality at birth</div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control input-sm datetimepicker" name="nationality_at_birth" id="nationality_at_birth" placeholder="Nationality at birth" >
+                                    <input type="text" class="form-control input-sm datetimepicker" name="nationality_at_birth" value="1989-08-07" id="nationality_at_birth" placeholder="Nationality at birth" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="occupation">Occupation</div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control input-sm" name="occupation" id="occupation" placeholder="Occupation" >
+                                    <input type="text" class="form-control input-sm" name="occupation" value="nhân viên" id="occupation" placeholder="Occupation" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="email">Email <font color="red">* </font></div>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control input-sm" name="email" id="email" placeholder="Email address" data-require-error="Email is required" data-pattern-error="Invalid email format" required>
+                                    <input type="email" class="form-control input-sm" name="email" value="duytu89@gmail.com" id="email" placeholder="Email address" data-require-error="Email is required" data-pattern-error="Invalid email format" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="passport_type">Type <font color="red">*</font></div>
                                 <div class="col-sm-8">
                                     <select class="form-control input-sm" name="passport_type" id="passport_type" placeholder="Type passport"  data-require-error="Type passport is required" required>
-                                        <option value="">[Choose type passport]</option>
+                                        <option value="CV" selected>[Choose type passport]</option>
                                         @foreach ($passport_type as $key =>  $value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
@@ -199,7 +199,7 @@
                                     (DD/MM/YYYY) <font color="red">*</font>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control input-sm datetimepicker" name="intended_date_of_entry" id="intended_date_of_entry" placeholder="Intended date of entry" data-require-error="Intended date of entry is required" required>
+                                    <input type="text" class="form-control input-sm datetimepicker" value="2023-12-04" name="intended_date_of_entry" id="intended_date_of_entry" placeholder="Intended date of entry" data-require-error="Intended date of entry is required" required>
                                 </div>
 
                             </div>
@@ -208,7 +208,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <select class="form-control input-sm select2" name="purpose_of_entry" id="purpose_of_entry" placeholder="Purpose of entry"  data-require-error="Purpose of entry is required" required>
-                                        <option value="">[Choose Purpose]</option>
+                                        <option value="78" selected>[Choose Purpose]</option>
                                         @foreach ($purpose_of_entry as $key =>  $value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
@@ -222,7 +222,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <select class="form-control input-sm select2" name="city_province" id="city_province" placeholder="City/Province"  data-require-error="City/Province is required" required>
-                                        <option value="">[Choose City]</option>
+                                        <option value="821" selected>[Choose City]</option>
                                         @foreach ($city_province as $key =>  $value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
@@ -239,13 +239,13 @@
                             <div class="form-group">
                                 <div class="col-sm-3 text_left" for="name_hosting_organisation">Name of hosting organisation</div>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control input-sm" name="name_hosting_organisation" id="name_hosting_organisation" placeholder="Name of hosting organisation" >
+                                    <input type="text" class="form-control input-sm" name="name_hosting_organisation" value="công ty trách nhiệm 1 thành viên" id="name_hosting_organisation" placeholder="Name of hosting organisation" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-3 text_left" for="address">Address</div>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control input-sm" name="address" id="address" placeholder="Address" >
+                                    <input type="text" class="form-control input-sm" name="address" value="hà nội" id="address" placeholder="Address" >
                                 </div>
                             </div>
                         </div>
@@ -272,13 +272,13 @@
                                                 <label>1</label>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control input-sm" name="fullname_child" placeholder="First name Middle name Last name">
+                                                <input type="text" class="form-control input-sm" name="fullname_child" value="nguyễn duy toàn" placeholder="First name Middle name Last name">
                                             </td>
                                             <td>
                                                 <div class="row-fluid">
                                                     <div class="span6"> 
                                                         <label class="radio-inline"> 
-                                                           <input type="radio" class="sex_radio_child"  name="sex_child_1" value="1" checked="checked">
+                                                           <input type="radio" class="sex_radio_child"  name="sex_child_1" checked value="1" checked="checked">
                                                             Male
                                                         </label>
                                                     </div>
@@ -292,12 +292,12 @@
                                             </td>
                                             <td>
                                                 <div class="form-group">
-                                                   <input type="text" class="form-control input-sm datetimepicker" name="birthday_child"  placeholder="birthday">
+                                                   <input type="text" class="form-control input-sm datetimepicker" value="2023-12-03" name="birthday_child"  placeholder="birthday">
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="file-input parent_input_file" style="text-align: center;">
-                                                        <input type="hidden" name="image_avatar_child" id="image_avatar_child_1">
+                                                        <input type="hidden" name="image_avatar_child" id="image_avatar_child_1" value="/images/z3661741009497_f2c8a815234ecad0739d9a87849b5f44.jpg">
                                                         <input type="file" style="display: none" name="image_child" id="image_child_1" data-id_child="1" onchange="addImageChild(this)" class="form-control">
                                                         <label for="image_child_1">  <img id="preview_img_avatar_child_1" src="{{ asset('images/noavatar_2x.jpeg') }}" height="190"/></label>
                                                 </div>
@@ -320,7 +320,7 @@
                             <div class="form-group">
                                 <div class="col-sm-5 text_left" for="grant_visa_valid_from">Grant Evisa valid from (DD/MM/YYYY) <font color="red">*</font></div>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control input-sm datetimepicker" name="grant_visa_valid_from" id="grant_visa_valid_from" placeholder="Grant Evisa valid from" data-require-error="Grant Evisa valid from is required" required>
+                                    <input type="text" class="form-control input-sm datetimepicker" name="grant_visa_valid_from" value="2022-12-09" id="grant_visa_valid_from" placeholder="Grant Evisa valid from" data-require-error="Grant Evisa valid from is required" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -329,7 +329,7 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <select class="form-control input-sm select2" name="alowed_to_entry_throuth_checkpoint" id="alowed_to_entry_throuth_checkpoint">
-                                        <option value="">[Choose Checkpoint]</option>
+                                        <option value="KLB" selected>[Choose Checkpoint]</option>
                                         @foreach ($entry_through_checkpoint as $key =>  $value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
@@ -343,7 +343,7 @@
                                     </font>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control input-sm datetimepicker" name="grant_visa_valid_to" id="grant_visa_valid_to" placeholder="To" data-require-error="To is required" required>
+                                    <input type="text" class="form-control input-sm datetimepicker" value="2021-2-12" name="grant_visa_valid_to" id="grant_visa_valid_to" placeholder="To" data-require-error="To is required" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -351,7 +351,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <select class="form-control input-sm select2" name="exit_throuth_checkpoint" id="exit_throuth_checkpoint">
-                                        <option value="">[Choose Checkpoint]</option>
+                                        <option value="SVD" selected>[Choose Checkpoint]</option>
                                         @foreach ($entry_through_checkpoint as $key =>  $value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
@@ -614,17 +614,132 @@
                         </div>
                     </section>
                     <div class="clearfix"></div>
+                    <h4>Payment details</h4>
+                    <section>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="col-sm-5 text_left" for="grant_visa_valid_from">Amount USD:
+                                </div>
+                                <div class="col-sm-7">
+                                    <p>{{$sumery}} USD</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-5 text_left" for="alowed_to_entry_throuth_checkpoint">Exchange Rate:</div>
+                                <div class="col-sm-7">
+                                    <p>{{number_format($currency)}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="grant_visa_valid_to">Amount VND:</div>
+                                <div class="col-sm-8">
+                                    <p>{{number_format($sumery*$currency)}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 text_left" for="exit_throuth_checkpoint">Description:</div>
+                                <div class="col-sm-8">
+                                    <p>E Visa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clearfix"></div>
                     <div class="col-sm-12" style="text-align: center">
-                        <button class="btn next" type="submit">Payment</button>
+                        <button class="btn next" type="submit">Pay e-visa fee</button>
                     </div>
                 </div>
                 <div class="row setup-content" id="step-3">
-                    <div class="col-md-12">
-                        <h3> Step 3</h3>
-                        <button class="btn btn-success btn-lg pull-right" type="submit">Finish!</button>
+                    <div class="col-md-12" style="text-align: center;">
+                        <h3> Payment Visa</h3>
+                    </div>
+                    <div class="col-md-12" style="text-align: center">
+                        <div class="panel-group methods row" id="accordion">
+                            <div class="panel panel-default">
+                                <div id="atm-card" class="panel-collapse">
+                                    <div class="panel-body form_option">
+                                        @if ($logoBankATM)
+                                            <ul class="cardList">
+                                                <a>
+                                                    <div class="panel-heading" style="text-align: left;">
+                                                        <h4 class="panel-title col-sm-12" style="margin-bottom: 10px;padding: 0;">PAY BY ATM CARD</h4>
+                                                    </div>
+                                                </a>
+                                                @foreach ($logoBankATM as $key => $value)
+                                                    <li>
+                                                        <div class="boxWrap">
+                                                            <a class="class-check-in create_payment" data-bankCode="{{json_encode($value)}}">
+                                                                <img id="preview_img_avatar" src="{{config('aleypay.domainLogoBank').$value['urlBankLogo']}}" width="100" height="50" style="object-fit: contain;"/>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                        @if ($logoBankVA)
+                                            <ul class="cardList">
+                                                <a>
+                                                    <div class="panel-heading" style="text-align: left;">
+                                                        <h4 class="panel-title col-sm-12" style="margin-bottom: 10px;padding: 0;">PAY BY ATM CARD</h4>
+                                                    </div>
+                                                </a>
+                                                @foreach ($logoBankVA as $key => $value)
+                                                    <li>
+                                                        <div class="boxWrap">
+                                                            <a class="class-check-in create_payment" data-bankCode="{{json_encode($value)}}">
+                                                                <img id="preview_img_avatar" src="{{config('aleypay.domainLogoBank').$value['urlBankLogo']}}" width="100" height="50" style="object-fit: contain;"/>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                        @if ($logoBankTransferOnline)
+                                            <ul class="cardList">
+                                                <a>
+                                                    <div class="panel-heading" style="text-align: left;">
+                                                        <h4 class="panel-title col-sm-12" style="margin-bottom: 10px;padding: 0;">PAY BY TRANSFER ONLINE</h4>
+                                                    </div>
+                                                </a>
+                                                @foreach ($logoBankTransferOnline as $key => $value)
+                                                    <li>
+                                                        <div class="boxWrap">
+                                                            <a class="class-check-in create_payment" data-bankCode="{{json_encode($value)}}">
+                                                                <img id="preview_img_avatar" src="{{config('aleypay.domainLogoBank').$value['urlBankLogo']}}" width="100" height="50" style="object-fit: contain;"/>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                        @if ($logoBankQRcode)
+                                            <ul class="cardList">
+                                                <a>
+                                                    <div class="panel-heading" style="text-align: left;">
+                                                        <h4 class="panel-title col-sm-12" style="margin-bottom: 10px;padding: 0;">PAY BY QRCODE</h4>
+                                                    </div>
+                                                </a>
+                                                @foreach ($logoBankQRcode as $key => $value)
+                                                    <li>
+                                                        <div class="boxWrap">
+                                                            <a class="class-check-in create_payment" data-bankCode="{{json_encode($value)}}">
+                                                                <img id="preview_img_avatar" src="{{config('aleypay.domainLogoBank').$value['urlBankLogo']}}" width="100" height="50" style="object-fit: contain;"/>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <button class="btn btn-success btn-lg cancel_payment">Cancel Payment</button> --}}
                     </div>
                 </div>
-               
             </form>
         </div>
     </main>
@@ -760,6 +875,36 @@
                         // }, 1000)
                     }
             });
+        });
+        $('.create_payment').click(function (e) { 
+            e.preventDefault();
+            showLoading();
+            let bankCode = JSON.stringify($(this).data('bankcode'));
+            let bankCustomer = $('.step_2_registration_code').text();
+            let amount = {{$sumery*$currency}};
+            var form_data = new FormData();
+            form_data.append('bankCustomer', bankCustomer );
+            form_data.append('bankCode', bankCode);
+            form_data.append('amount', amount);
+            $.ajax({
+                    url: '/transaction/payment',
+                    type: 'POST',
+                    data: form_data,
+                    contentType: false,
+                    processData: false, 
+                    success: function (response) {
+                        hideLoading();
+                        console.log(response.data);
+                        if (response.status == true) {
+                        }else{
+                            toastr.error(response.message);
+                        }
+                    },
+                    error: function (response){
+                        hideLoading();
+                        toastr.warning(response.responseJSON.message);
+                    }
+                });
         });
         $('.next').click(function (e) { 
             e.preventDefault();
@@ -918,5 +1063,4 @@
         });
     </script>
 </body>
-
 </html>
