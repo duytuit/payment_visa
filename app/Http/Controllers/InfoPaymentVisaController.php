@@ -135,11 +135,11 @@ class InfoPaymentVisaController extends Controller
             'currency' => 'VND',
             'orderDescription' => 'E Visa',
             'totalItem' => 1,
-            'checkoutType' => 3,
-            'installment' => False,
+            'checkoutType' => 4,
+            'installment' => true,
             'bankCode' => @$info_bank->bankCode,
             'paymentMethod' => @$info_bank->methodCode,
-            'cancelUrl' =>((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http"). "://". @$_SERVER['HTTP_HOST'].config('aleypay.sandbox.callbackUrl'),
+            'cancelUrl' =>((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http"). "://". @$_SERVER['HTTP_HOST'].config('aleypay.live.callbackUrl'),
             'buyerName' => $info_visa->full_name,
             'buyerEmail' => $info_visa->email,
             'buyerPhone' => $info_visa->phone,
@@ -148,10 +148,11 @@ class InfoPaymentVisaController extends Controller
             'buyerCountry' => 'Việt Nam',
             'paymentHours' => 48,
             'allowDomestic' => true,
+            // 'month' => 3,
             'language' => 'vi'
         ];
         $result = $this->sendOrderV3($data);
-        dd($result);
+        return response()->json(['status' => true, 'message' => 'insert data success.', 'data' => $result], 200);
     }
     private function convertUsdToVnd()
     {
@@ -171,13 +172,13 @@ class InfoPaymentVisaController extends Controller
     }
     private function sendOrderV3($data)
     {
-        $data['tokenKey'] = config('aleypay.sandbox.apiKey');
-        $checksumKey = config('aleypay.sandbox.checksumKey');
-        $data['returnUrl'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http"). "://". @$_SERVER['HTTP_HOST'].config('aleypay.sandbox.callbackUrl');
+        $data['tokenKey'] = config('aleypay.live.apiKey');
+        $checksumKey = config('aleypay.live.checksumKey');
+        $data['returnUrl'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http"). "://". @$_SERVER['HTTP_HOST'].config('aleypay.live.callbackUrl');
         $signature =  AlepayUtils::makeSignature_v2($data, $checksumKey);
         $data['signature'] = $signature;
         $data_string = json_encode($data);
-		$url = config('aleypay.sandbox.domain').'/request-payment';
+		$url = config('aleypay.live.domain').'/request-payment';
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);

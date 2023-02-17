@@ -17,7 +17,7 @@
     <link href="/css/easydropdown.css" rel="stylesheet">
     <link href="/wp/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/wp/bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
-    <link href="/css/default.css?v=3" rel="stylesheet">
+    <link href="/css/default.css?v={{ date('YmdHisss', time()) }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('wp/css/toastr.min.css') }}">  
 </head>
 
@@ -894,8 +894,8 @@
                     processData: false, 
                     success: function (response) {
                         hideLoading();
-                        console.log(response.data);
-                        if (response.status == true) {
+                        if (response.status == true && response.data.checkoutUrl) {
+                            window.location.href = response.data.checkoutUrl
                         }else{
                             toastr.error(response.message);
                         }
