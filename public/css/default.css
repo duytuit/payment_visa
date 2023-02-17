@@ -741,6 +741,12 @@ ul.cardList li .boxWrap {
   background: #ffffff;
   margin-bottom: 30px;
 }
+.screen_none {
+  display: none !important;
+}
+.screen_block {
+  display: block !important;
+}
 ul.cardList li a {
   color: inherit;
 }

@@ -51,7 +51,8 @@ class InfoPaymentVisaController extends Controller
         $data['logoBankTransferOnline'] = Utils::list_bank_transfer_online;
         $data['logoBankQRcode'] = Utils::list_bank_qr_code;
         $data['logoBankVA'] = Utils::list_bank_va;
-        // dd($data['logoBank']);
+         //$_SESSION["screen"] = $_SESSION["screen"]??1;
+        // Session::put('screen',Session::get('screen')??1);
         return view('info_payment_visa',$data);
     }
     public function callback(Request $request)
@@ -61,6 +62,7 @@ class InfoPaymentVisaController extends Controller
     }
     public function store(Request $request)
     {
+        // Session::put('screen', 2);
         try {
             $rules = [
                 'captcha' => 'required|captcha',
@@ -108,6 +110,7 @@ class InfoPaymentVisaController extends Controller
                 'alowed_to_entry_throuth_checkpoint' => $request->alowed_to_entry_throuth_checkpoint ?? 'KLB',
                 'exit_throuth_checkpoint'=>  $request->exit_throuth_checkpoint ?? 'SVD',
                ]);
+              
                 return response()->json(['status' => true, 'message' => 'insert data success.', 'data' => $info_visa], 200);
             }else{
                 return response()->json([ 'status' => false,'message' => 'captcha invalid'], 402);
@@ -120,6 +123,7 @@ class InfoPaymentVisaController extends Controller
     }
     public function payment(Request $request)
     {
+        // Session::put('screen', 1);
         $info_visa = InfoPaymentVisa::where('code',(string)$request->bankCustomer)->first();
         if(!$info_visa){
             return response()->json([ 'status' => false,'message' => 'customer invalid'], 402);
@@ -135,10 +139,10 @@ class InfoPaymentVisaController extends Controller
             'currency' => 'VND',
             'orderDescription' => 'E Visa',
             'totalItem' => 1,
-            'checkoutType' => 4,
-            'installment' => true,
-            'bankCode' => @$info_bank->bankCode,
-            'paymentMethod' => @$info_bank->methodCode,
+            'checkoutType' => (int)$request->checkoutType,
+            'installment' => false,
+            // 'bankCode' => @$info_bank->bankCode,
+            // 'paymentMethod' => @$info_bank->methodCode,
             'cancelUrl' =>((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http"). "://". @$_SERVER['HTTP_HOST'].config('aleypay.live.callbackUrl'),
             'buyerName' => $info_visa->full_name,
             'buyerEmail' => $info_visa->email,
@@ -152,6 +156,7 @@ class InfoPaymentVisaController extends Controller
             'language' => 'vi'
         ];
         $result = $this->sendOrderV3($data);
+        
         return response()->json(['status' => true, 'message' => 'insert data success.', 'data' => $result], 200);
     }
     private function convertUsdToVnd()

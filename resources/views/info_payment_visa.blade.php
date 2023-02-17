@@ -32,17 +32,21 @@
             </div>
         </div>
     </header> -->
-    <hr>
+    {{-- <hr> --}}
+    <br>
     <main>
         <div class="container">
 
             <form id="valForm">
                 <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                <ul id="progressbar">
+                {{-- <ul id="progressbar">
                     <li class="active"></li>
                     <li></li>
                     <li></li>
-                </ul>
+                </ul> --}}
+                {{-- @php
+                    dd(Session::get('screen'));
+                @endphp --}}
                 <div class="row setup-content" id="step-1">
                     <h4>Fulfill foreigner’s information</h4>
                     <h5>Foreigner's images</h5>
@@ -614,9 +618,9 @@
                         </div>
                     </section>
                     <div class="clearfix"></div>
-                    <h4>Payment details</h4>
                     <section>
                         <div class="col-sm-6">
+                            <h4>Payment details</h4>
                             <div class="form-group">
                                 <div class="col-sm-5 text_left" for="grant_visa_valid_from">Amount USD:
                                 </div>
@@ -630,28 +634,56 @@
                                     <p>{{number_format($currency)}}</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
                             <div class="form-group">
-                                <div class="col-sm-4 text_left" for="grant_visa_valid_to">Amount VND:</div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5 text_left" for="grant_visa_valid_to">Amount VND:</div>
+                                <div class="col-sm-7">
                                     <p>{{number_format($sumery*$currency)}}</p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-4 text_left" for="exit_throuth_checkpoint">Description:</div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5 text_left" for="exit_throuth_checkpoint">Description:</div>
+                                <div class="col-sm-7">
                                     <p>E Visa</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4>Method Payment Alepay</h4>
+                            <div class="form-group">
+                                <div class="text_left" for="alowed_to_entry_throuth_checkpoint">
+                                    <div style="display: inline-flex">
+                                       <input type="radio" value="1" id="radio_visa_master" name="payment_alepay"/>
+                                       <label style="font-weight: normal;margin-top: 10px;
+                                       margin-left: 5px;" for="radio_visa_master"> Pay by Visa/Master</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="text_left" for="alowed_to_entry_throuth_checkpoint">
+                                    <div style="display: inline-flex">
+                                        <input type="radio" value="2" id="radio_installment" name="payment_alepay">
+                                        <label style="font-weight: normal;margin-top: 10px;
+                                        margin-left: 5px;" for="radio_installment"> Pay installment</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="text_left" for="alowed_to_entry_throuth_checkpoint">
+                                    <div style="display: inline-flex">
+                                        <input type="radio" value="4" id="radio_atm_qrcode" name="payment_alepay">
+                                        <label style="font-weight: normal;margin-top: 10px;
+                                        margin-left: 5px;" for="radio_atm_qrcode"> Pay by ATM / QR Code</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
                     <div class="clearfix"></div>
                     <div class="col-sm-12" style="text-align: center">
-                        <button class="btn next" type="submit">Pay e-visa fee</button>
+                        <button class="btn create_payment" >Pay e-visa fee</button>
                     </div>
                 </div>
-                <div class="row setup-content" id="step-3">
+                {{-- <div class="row setup-content" id="step-3">
                     <div class="col-md-12" style="text-align: center;">
                         <h3> Payment Visa</h3>
                     </div>
@@ -660,86 +692,14 @@
                             <div class="panel panel-default">
                                 <div id="atm-card" class="panel-collapse">
                                     <div class="panel-body form_option">
-                                        @if ($logoBankATM)
-                                            <ul class="cardList">
-                                                <a>
-                                                    <div class="panel-heading" style="text-align: left;">
-                                                        <h4 class="panel-title col-sm-12" style="margin-bottom: 10px;padding: 0;">PAY BY ATM CARD</h4>
-                                                    </div>
-                                                </a>
-                                                @foreach ($logoBankATM as $key => $value)
-                                                    <li>
-                                                        <div class="boxWrap">
-                                                            <a class="class-check-in create_payment" data-bankCode="{{json_encode($value)}}">
-                                                                <img id="preview_img_avatar" src="{{config('aleypay.domainLogoBank').$value['urlBankLogo']}}" width="100" height="50" style="object-fit: contain;"/>
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                        @if ($logoBankVA)
-                                            <ul class="cardList">
-                                                <a>
-                                                    <div class="panel-heading" style="text-align: left;">
-                                                        <h4 class="panel-title col-sm-12" style="margin-bottom: 10px;padding: 0;">PAY BY ATM CARD</h4>
-                                                    </div>
-                                                </a>
-                                                @foreach ($logoBankVA as $key => $value)
-                                                    <li>
-                                                        <div class="boxWrap">
-                                                            <a class="class-check-in create_payment" data-bankCode="{{json_encode($value)}}">
-                                                                <img id="preview_img_avatar" src="{{config('aleypay.domainLogoBank').$value['urlBankLogo']}}" width="100" height="50" style="object-fit: contain;"/>
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                        @if ($logoBankTransferOnline)
-                                            <ul class="cardList">
-                                                <a>
-                                                    <div class="panel-heading" style="text-align: left;">
-                                                        <h4 class="panel-title col-sm-12" style="margin-bottom: 10px;padding: 0;">PAY BY TRANSFER ONLINE</h4>
-                                                    </div>
-                                                </a>
-                                                @foreach ($logoBankTransferOnline as $key => $value)
-                                                    <li>
-                                                        <div class="boxWrap">
-                                                            <a class="class-check-in create_payment" data-bankCode="{{json_encode($value)}}">
-                                                                <img id="preview_img_avatar" src="{{config('aleypay.domainLogoBank').$value['urlBankLogo']}}" width="100" height="50" style="object-fit: contain;"/>
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                        @if ($logoBankQRcode)
-                                            <ul class="cardList">
-                                                <a>
-                                                    <div class="panel-heading" style="text-align: left;">
-                                                        <h4 class="panel-title col-sm-12" style="margin-bottom: 10px;padding: 0;">PAY BY QRCODE</h4>
-                                                    </div>
-                                                </a>
-                                                @foreach ($logoBankQRcode as $key => $value)
-                                                    <li>
-                                                        <div class="boxWrap">
-                                                            <a class="class-check-in create_payment" data-bankCode="{{json_encode($value)}}">
-                                                                <img id="preview_img_avatar" src="{{config('aleypay.domainLogoBank').$value['urlBankLogo']}}" width="100" height="50" style="object-fit: contain;"/>
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                        
+                                       
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{-- <button class="btn btn-success btn-lg cancel_payment">Cancel Payment</button> --}}
                     </div>
-                </div>
+                </div> --}}
+                {{-- <button class="btn btn-success btn-lg cancel_payment">Cancel Payment</button> --}}
             </form>
         </div>
     </main>
@@ -881,11 +841,13 @@
             showLoading();
             let bankCode = JSON.stringify($(this).data('bankcode'));
             let bankCustomer = $('.step_2_registration_code').text();
+            let payment_alepay = $("input[name='payment_alepay']:checked").val();
             let amount = {{$sumery*$currency}};
             var form_data = new FormData();
             form_data.append('bankCustomer', bankCustomer );
             form_data.append('bankCode', bankCode);
             form_data.append('amount', amount);
+            form_data.append('checkoutType', payment_alepay);
             $.ajax({
                     url: '/transaction/payment',
                     type: 'POST',
