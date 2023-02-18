@@ -62,7 +62,7 @@ return [
 
      
     'email_admin' =>[
-        'duytu89@gmail.com'
+        'duytu89@gmail.com','vtanh85@gmail.com'
     ],
     /*
     |--------------------------------------------------------------------------
