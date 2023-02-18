@@ -96,7 +96,7 @@ class InfoPaymentVisaController extends Controller
                 'occupation' => $request->occupation ?? 'nhân viên',
                 'permanent_residential_address' => $request->permanent_residential_address ?? 'hà nội',
                 'phone' => $request->phone ?? '0366961008',
-                'email' => $request->email ?? 'duytu89@gmail.com',
+                'email' => $request->email ?? 'tund@dxmb.vn',
                 'passport_number' => $request->passport_number ?? '3462934788',
                 'passport_type' => $request->passport_type ?? 'CV',
                 'expiry_date' => '2023-12-12', //$request->expiry_date ? date('Y-m-d',strtotime($request->expiry_date)) : null,

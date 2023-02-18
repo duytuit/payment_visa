@@ -184,7 +184,7 @@
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="email">Email <font color="red">* </font></div>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control input-sm" name="email" value="duytu89@gmail.com" id="email" placeholder="Email address" data-require-error="Email is required" data-pattern-error="Invalid email format" required>
+                                    <input type="email" class="form-control input-sm" name="email" value="tund@dxmb.vn" id="email" placeholder="Email address" data-require-error="Email is required" data-pattern-error="Invalid email format" required>
                                 </div>
                             </div>
                             <div class="form-group">
