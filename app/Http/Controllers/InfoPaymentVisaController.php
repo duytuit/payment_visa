@@ -58,7 +58,7 @@ class InfoPaymentVisaController extends Controller
     }
     public function callback(Request $request)
     {
-        dd($request);
+        dd($request->all());
         return view('callback_result');
     }
     public function store(Request $request)
@@ -148,7 +148,7 @@ class InfoPaymentVisaController extends Controller
             'installment' => false,
             // 'bankCode' => @$info_bank->bankCode,
             // 'paymentMethod' => @$info_bank->methodCode,
-            'cancelUrl' =>((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http"). "://". @$_SERVER['HTTP_HOST'].config('aleypay.live.callbackUrl'),
+            'cancelUrl' =>((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http"). "://". @$_SERVER['HTTP_HOST'].config('aleypay.sandbox.callbackUrl'),
             'buyerName' => $info_visa->full_name,
             'buyerEmail' => $info_visa->email,
             'buyerPhone' => $info_visa->phone,
@@ -182,13 +182,13 @@ class InfoPaymentVisaController extends Controller
     }
     private function sendOrderV3($data)
     {
-        $data['tokenKey'] = config('aleypay.live.apiKey');
-        $checksumKey = config('aleypay.live.checksumKey');
-        $data['returnUrl'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http"). "://". @$_SERVER['HTTP_HOST'].config('aleypay.live.callbackUrl');
+        $data['tokenKey'] = config('aleypay.sandbox.apiKey');
+        $checksumKey = config('aleypay.sandbox.checksumKey');
+        $data['returnUrl'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http"). "://". @$_SERVER['HTTP_HOST'].config('aleypay.sandbox.callbackUrl');
         $signature =  AlepayUtils::makeSignature_v2($data, $checksumKey);
         $data['signature'] = $signature;
         $data_string = json_encode($data);
-		$url = config('aleypay.live.domain').'/request-payment';
+		$url = config('aleypay.sandbox.domain').'/request-payment';
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
