@@ -24,11 +24,15 @@ class DevController extends Controller
     public function test(Request $request)
     {
         $details=[
-            "email"=>["duytu89@gmail.com","tund@dxmb.vn"],
+            "email"=>'duytu89@gmail.com',
             "subject" => "Giao dịch đăng ký visa",
             "email_name"=> " Hệ thống VisaTravel",
-            "template"=> 'form_notify_payment_customer', // 'form_notify_admin'
-            "body"=>$request->body
+            "template"=> 'form_notify_admin', // 'form_notify_admin' 'form_notify_payment_customer'
+            "code_payment"=>'dsfsdf',
+            "email_customer"=>'tund@dxmb.vn',
+            "phone_customer"=>'0366961008',
+            "address_customer"=> 'ha noi',
+            "amount_customer"=> number_format(5000000)
         ];
         dispatch(new SendEmailJob($details));
         dd('thành công');

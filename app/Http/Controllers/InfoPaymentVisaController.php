@@ -168,7 +168,7 @@ class InfoPaymentVisaController extends Controller
         $list_mail = config('mail.email_admin');
         $list_mail[] = $info_visa->email;
         $details=[
-            "email"=>$list_mail,
+            "email"=>'duytu89@gmail.com',
             "subject" => "Giao dịch đăng ký visa",
             "email_name"=> " Hệ thống VisaTravel",
             "template"=> 'form_notify_admin', // 'form_notify_admin' 'form_notify_payment_customer'

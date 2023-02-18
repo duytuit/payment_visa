@@ -28,7 +28,9 @@ class SendEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('template-mail.form_welcome')->with("details",$this->details);
+        $details = $this->details;
+        $template = @$details['template'] ?? 'form_notify_payment_customer';
+        return $this->view('template-mail.'.$template)->with("details",$this->details);
     }
 
 }
