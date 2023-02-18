@@ -132,17 +132,11 @@ class dBug
         $msg .= self::_getDebugInfo();
         self::pushNotification($msg);
     }
-    static function trackingInfo($msg = null)
+    static function trackingInfo($msg)
     {
-        $_msg = "\nMessage:\n";
-        $msg  = json_decode($msg);
-        if($msg){
-           foreach ($msg as $key => $value) {
-               $_msg .= $key .' : '. $value ."\n";
-           }
-        }
-        $_msg .= self::_getDebugInfo();
-        self::pushNotification($_msg);
+        $msg = "\nMessage: " . json_encode($msg);
+        $msg .= self::_getDebugInfo();
+        self::pushNotification($msg);
     }
     static function trackingPhpErrorV3($msg = null)
     {

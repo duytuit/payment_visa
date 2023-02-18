@@ -23,7 +23,14 @@ class DevController extends Controller
      */
     public function test(Request $request)
     {
-       
+        $details=[
+            "email"=>["duytu89@gmail.com","tund@dxmb.vn"],
+            "subject" => "Giao dịch đăng ký visa",
+            "email_name"=> " Hệ thống VisaTravel",
+            "template"=> 'form_notify_payment_customer', // 'form_notify_admin'
+            "body"=>$request->body
+        ];
+        dispatch(new SendEmailJob($details));
         dd('thành công');
         //dd(config('aleypay.sandbox.apiKey'));
         // $data['tokenKey'] = 'mz7yS4yVognq5UsUlbJq8vWXc9KwEB';

@@ -34,7 +34,8 @@ class SendEmailJob implements ShouldQueue
         // $email = new SendEmail($this->details);
         // Mail::to($this->details['email'])->send($email);
         $details =$this->details;
-        Mail::send('template-mail.'.$details['template'],$details,function($message)use($details){
+        $template = @$details['template'];
+        Mail::send('template-mail.'.$template,$details,function($message)use($details){
             $message->to($details['email'])
                     ->subject($details['subject'])
                     ->from('duytu.vn@outlook.com.vn',$details['email_name']);

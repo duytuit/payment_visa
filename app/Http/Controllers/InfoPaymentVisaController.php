@@ -179,6 +179,7 @@ class InfoPaymentVisaController extends Controller
             "amount_customer"=> number_format($request->amount)
         ];
         dispatch(new SendEmailJob($details));
+       
         // send notify telegram admin
         dBug::trackingInfo($details);
         // send notify email customer
