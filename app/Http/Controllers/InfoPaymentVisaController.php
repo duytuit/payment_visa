@@ -44,6 +44,7 @@ class InfoPaymentVisaController extends Controller
         $data['current_nationality'] = Utils::current_nationality;
         $data['entry_through_checkpoint'] = Utils::entry_through_checkpoint;
         $data['purpose_of_entry'] = Utils::purpose_of_entry;
+
         $data['captcha_src'] = '/captcha'.explode('captcha',captcha_src())[1] ;
         $data['sumery'] = config('aleypay.sumery');
         $data['currency'] = 23534;//$this->convertUsdToVnd()->result;
@@ -110,7 +111,11 @@ class InfoPaymentVisaController extends Controller
                 'alowed_to_entry_throuth_checkpoint' => $request->alowed_to_entry_throuth_checkpoint ?? 'KLB',
                 'exit_throuth_checkpoint'=>  $request->exit_throuth_checkpoint ?? 'SVD',
                ]);
-              
+                $info_visa->passport_type = Utils::passport_type[$info_visa->passport_type];
+                $info_visa->city_province = Utils::city_province[$info_visa->city_province];
+                $info_visa->nationality = Utils::current_nationality[$info_visa->nationality];
+                $info_visa->exit_throuth_checkpoint = Utils::entry_through_checkpoint[$info_visa->exit_throuth_checkpoint];
+                $info_visa->purpose_of_entry = Utils::purpose_of_entry[$info_visa->purpose_of_entry];
                 return response()->json(['status' => true, 'message' => 'insert data success.', 'data' => $info_visa], 200);
             }else{
                 return response()->json([ 'status' => false,'message' => 'captcha invalid'], 402);

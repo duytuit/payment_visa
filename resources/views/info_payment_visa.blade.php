@@ -47,7 +47,7 @@
                 {{-- @php
                     dd(Session::get('screen'));
                 @endphp --}}
-                <div class="row setup-content" id="step-1">
+                <div class="row setup-content" id="step-1" style="display: none;">
                     <h4>Fulfill foreigner’s information</h4>
                     <h5>Foreigner's images</h5>
                     <section>
@@ -670,7 +670,7 @@
                             <div class="form-group">
                                 <div class="text_left" for="alowed_to_entry_throuth_checkpoint">
                                     <div style="display: inline-flex">
-                                        <input type="radio" value="4" id="radio_atm_qrcode" name="payment_alepay">
+                                        <input type="radio" value="4" id="radio_atm_qrcode" name="payment_alepay" checked>
                                         <label style="font-weight: normal;margin-top: 10px;
                                         margin-left: 5px;" for="radio_atm_qrcode"> Pay by ATM / QR Code</label>
                                     </div>
@@ -680,6 +680,7 @@
                     </section>
                     <div class="clearfix"></div>
                     <div class="col-sm-12" style="text-align: center">
+                        <input type="submit" value="<< Prev" class="btn prev_form" style="cursor: pointer">
                         <button class="btn create_payment" >Pay e-visa fee</button>
                     </div>
                 </div>
@@ -721,6 +722,9 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
             }
         });
+        $('.prev_form').click(function (e) { 
+            previousForm(this);
+        })
         $('.submit').click(function (e) { 
             let selecter = this;
             e.preventDefault();
@@ -728,10 +732,11 @@
             var list_child_items = [];
             $('.list_child ._item_child').each(function(){
                                
-                let fullname_child = $(this).find("[name='fullname_child']").val();
+                let fullname_child = $(this).find("input[name='fullname_child']").val();
                 let sex_child = $(this).find('.sex_radio_child:radio:checked').val();
-                let birthday_child = $(this).find("[name='birthday_child']").val();
-                let image_avatar_child = $(this).find("[name='image_avatar_child']").val();
+                let birthday_child = $(this).find("input[name='birthday_child']").val();
+                // console.log('sdfdsfsfs'+birthday_child);
+                let image_avatar_child = $(this).find("input[name='image_avatar_child']").val();
                 list_child_items.push({
                         fullname_child: fullname_child,
                         sex_child: sex_child,
@@ -741,7 +746,7 @@
               
             })
            
-          
+        //    console.log('child'+JSON.stringify(list_child_items));
             var form_data = new FormData($('#valForm')[0]);
             if(list_child_items.length > 0){
                 form_data.append('list_child_items', JSON.stringify(list_child_items) );
@@ -754,10 +759,10 @@
                     processData: false, 
                     success: function (response) {
                         hideLoading();
-                        console.log(response.data);
-                      
+                        // console.log(response.data);
                         if (response.status == true) {
                             toastr.success(response.message);
+                            window.localStorage.setItem("data_info",JSON.stringify(response.data));
                             $('#step_2_preview_img_passport').attr('src', response.data.passport_data_page_image).height(190).width(310);
                             $('#step_2_preview_img_avatar').attr('src', response.data.portrait_photography).height(190).width(150);
                             $('.step_2_registration_code').text(response.data.code);
@@ -787,6 +792,7 @@
                             if(response.data.children_14_years_old){
                                 let children_14_years_old = JSON.parse(response.data.children_14_years_old);
                                 let html = '';
+                                $(".step_2_list_child").html('');
                                 children_14_years_old.forEach((item,index)=>{
                                      index=index+1;
                                      html +=  ' <tr class="_item_child">'+
@@ -838,20 +844,21 @@
         });
         $('.create_payment').click(function (e) { 
             e.preventDefault();
+            window.localStorage.setItem("data_info",null);
             showLoading();
             let bankCode = JSON.stringify($(this).data('bankcode'));
             let bankCustomer = $('.step_2_registration_code').text();
             let payment_alepay = $("input[name='payment_alepay']:checked").val();
-            let amount = {{$sumery*$currency}};
-            var form_data = new FormData();
-            form_data.append('bankCustomer', bankCustomer );
-            form_data.append('bankCode', bankCode);
-            form_data.append('amount', amount);
-            form_data.append('checkoutType', payment_alepay);
+            let amount = "{{$sumery*$currency}}";
+            var form_data_payment = new FormData();
+            form_data_payment.append('bankCustomer', bankCustomer );
+            form_data_payment.append('bankCode', bankCode);
+            form_data_payment.append('amount', amount);
+            form_data_payment.append('checkoutType', payment_alepay);
             $.ajax({
                     url: '/transaction/payment',
                     type: 'POST',
-                    data: form_data,
+                    data: form_data_payment,
                     contentType: false,
                     processData: false, 
                     success: function (response) {
@@ -1022,6 +1029,78 @@
                         toastr.error(response.responseJSON.message);
                     }
             });
+        });
+        $(document).ready(function () {
+          var data_info =  window.localStorage.getItem("data_info");
+           if(data_info != 'null'){
+                data_info = JSON.parse(data_info);
+                $('#step-2').show();
+                $('#step-1').hide();
+                $('#step_2_preview_img_passport').attr('src', data_info.passport_data_page_image).height(190).width(310);
+                $('#step_2_preview_img_avatar').attr('src', data_info.portrait_photography).height(190).width(150);
+                $('.step_2_registration_code').text(data_info.code);
+                $('.step_2_full_name').text(data_info.full_name);
+                $('.step_2_birthday').text(data_info.birthday);
+                $('.step_2_nationality').text(data_info.nationality);
+                $('.step_2_religion').text(data_info.religion);
+                $('.step_2_permanent_residential_address').text(data_info.permanent_residential_address);
+                $('.step_2_passport_number').text(data_info.passport_number);
+                $('.step_2_expiry_date').text(data_info.expiry_date);
+                $('.step_2_intended_length_of_stay_in_vn').text(data_info.full_name);
+                $('.step_2_intended_temporaty_residential_address_in_vn').text(data_info.intended_temporaty_residential_address_in_vn);
+                $('.step_2_sex').text(data_info.sex);
+                $('.step_2_nationality_at_birth').text(data_info.nationality_at_birth);
+                $('.step_2_occupation').text(data_info.occupation);
+                $('.step_2_email').text(data_info.email);
+                $('.step_2_passport_type').text(data_info.passport_type);
+                $('.step_2_intended_date_of_entry').text(data_info.intended_date_of_entry);
+                $('.step_2_purpose_of_entry').text(data_info.purpose_of_entry);
+                $('.step_2_city_province').text(data_info.city_province);
+                $('.step_2_name_hosting_organisation').text(data_info.name_hosting_organisation);
+                $('.step_2_address').text(data_info.address);
+                $('.step_2_grant_visa_valid_from').text(data_info.grant_visa_valid_from);
+                $('.step_2_alowed_to_entry_throuth_checkpoint').text(data_info.alowed_to_entry_throuth_checkpoint);
+                $('.step_2_grant_visa_valid_to').text(data_info.grant_visa_valid_to);
+                $('.step_2_exit_throuth_checkpoint').text(data_info.exit_throuth_checkpoint);
+                if(data_info.children_14_years_old){
+                    let children_14_years_old = JSON.parse(data_info.children_14_years_old);
+                    let html = '';
+                    children_14_years_old.forEach((item,index)=>{
+                            index=index+1;
+                            html +=  ' <tr class="_item_child">'+
+                                    '<td>'+
+                                    '    <label>'+index+'</label>'+
+                                    '</td>'+
+                                    '<td>'+
+                                    '       <p>'+item.fullname_child+'</p>'+
+                                    '</td>'+
+                                    '<td>'+
+                                    '    <div class="row-fluid">'+
+                                    '        <div class="span6"> '+
+                                    '            <label class="radio-inline"> '+
+                                    '                <p>'+item.sex_child+'</p>'+
+                                    '            </label>'+
+                                    '        </div>'+
+                                    '    </div>'+
+                                    '</td>'+
+                                    '<td>'+
+                                    '    <div class="form-group">'+
+                                    '                <p>'+item.birthday_child+'</p>'+
+                                    '    </div>'+
+                                    '</td>'+
+                                    '<td>'+
+                                    '    <div class="file-input parent_input_file" style="text-align: center;">'+
+                                    '            <img src="'+item.image_avatar_child+'" height="190"/>'+
+                                    '    </div>'+
+                                    '</td>'+
+                                    '</tr>';
+                    })
+                    $(".step_2_list_child").html(html);
+                }
+           }else{
+            $('#step-1').show();
+            $('#step-2').hide();
+           }
         });
     </script>
 </body>
