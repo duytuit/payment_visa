@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\dBug;
 use App\Helpers\Lib\Utils\AlepayUtils;
 use App\Helpers\Utils;
+use App\Jobs\SendEmailJob;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -116,6 +118,8 @@ class InfoPaymentVisaController extends Controller
                 $info_visa->nationality = Utils::current_nationality[$info_visa->nationality];
                 $info_visa->exit_throuth_checkpoint = Utils::entry_through_checkpoint[$info_visa->exit_throuth_checkpoint];
                 $info_visa->purpose_of_entry = Utils::purpose_of_entry[$info_visa->purpose_of_entry];
+                $info_visa->alowed_to_entry_throuth_checkpoint = Utils::entry_through_checkpoint[$info_visa->alowed_to_entry_throuth_checkpoint];
+                dBug::trackingInfo($info_visa);
                 return response()->json(['status' => true, 'message' => 'insert data success.', 'data' => $info_visa], 200);
             }else{
                 return response()->json([ 'status' => false,'message' => 'captcha invalid'], 402);
@@ -160,6 +164,25 @@ class InfoPaymentVisaController extends Controller
             // 'month' => 3,
             'language' => 'vi'
         ];
+        // send notify email admin
+        $list_mail = config('mail.email_admin');
+        $list_mail[] = $info_visa->email;
+        $details=[
+            "email"=>$list_mail,
+            "subject" => "Giao dịch đăng ký visa",
+            "email_name"=> " Hệ thống VisaTravel",
+            "template"=> 'form_notify_admin', // 'form_notify_admin' 'form_notify_payment_customer'
+            "code_payment"=>$info_visa->code,
+            "email_customer"=>$info_visa->email,
+            "phone_customer"=>$info_visa->phone,
+            "address_customer"=>$info_visa->address,
+            "amount_customer"=> number_format($request->amount)
+        ];
+        dispatch(new SendEmailJob($details));
+        // send notify telegram admin
+        dBug::trackingInfo($details);
+        // send notify email customer
+       
         $result = $this->sendOrderV3($data);
         
         return response()->json(['status' => true, 'message' => 'insert data success.', 'data' => $result], 200);

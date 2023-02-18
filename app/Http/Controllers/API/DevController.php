@@ -6,7 +6,10 @@ use DB;
 use App\Category;
 use App\Helpers\Lib\Utils\AlepayUtils;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmailJob;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,31 +23,52 @@ class DevController extends Controller
      */
     public function test(Request $request)
     {
+       
+        dd('thành công');
         //dd(config('aleypay.sandbox.apiKey'));
-        $data['tokenKey'] = 'mz7yS4yVognq5UsUlbJq8vWXc9KwEB';
-        $checksumKey = 's7UlvRCqTieXyA9UXoo2R9IJQ4W62p';
-        $signature =  AlepayUtils::makeSignature_v2($data, $checksumKey);
-        $data['signature'] = $signature;
-        $data_string = json_encode($data);
-		$url = 'https://alepay-v3.nganluong.vn/api/v3/checkout/get-list-banks';
-		print_r($url);
+        // $data['tokenKey'] = 'mz7yS4yVognq5UsUlbJq8vWXc9KwEB';
+        // $checksumKey = 's7UlvRCqTieXyA9UXoo2R9IJQ4W62p';
+        // $signature =  AlepayUtils::makeSignature_v2($data, $checksumKey);
+        // $data['signature'] = $signature;
+        // $data_string = json_encode($data);
+		// $url = 'https://alepay-v3.nganluong.vn/api/v3/checkout/get-list-banks';
+		// print_r($url);
 
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen($data_string)
-        ));
+        // $ch = curl_init($url);
+        // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        //     'Content-Type: application/json',
+        //     'Content-Length: ' . strlen($data_string)
+        // ));
 
-        $result = curl_exec($ch);
-        dd($result);
-        $returned_data = json_decode($result);
-        return response()->json($returned_data, 200);
+        // $result = curl_exec($ch);
+        // dd($result);
+        // $returned_data = json_decode($result);
+        // return response()->json($returned_data, 200);
     }
-
+    public function install_command(Request $request)
+    {
+        $time = $request->get("time", false);
+        if(empty($request->command))
+        {
+            dd('chưa chuyền param query: command');
+        }
+        $command = $request->command;
+        if($time) $command.=" ".$time;
+        $dfg = Artisan::call($command);
+        dd($dfg);
+    }
+    public function install_command_migrate(Request $request)
+    {
+        $dfg= Artisan::call('migrate',
+        array(
+          '--path' => 'database/migrations',
+          '--force' => true));
+        dd($dfg);
+    }
 
     /**
      * Show the form for creating a new resource. 

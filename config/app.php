@@ -28,6 +28,8 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+
+    'telegram_debug_log_channel'=>'https://api.telegram.org/bot6205405693:AAFCBPQ9cjEHOcobgbHb_bprfDo8ZxOviMc/sendmessage?chat_id=-819218541&text=',
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
