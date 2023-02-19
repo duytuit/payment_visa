@@ -35,7 +35,7 @@ class DevController extends Controller
         //     "amount_customer"=> number_format(5000000)
         // ];
         // dispatch(new SendEmailJob($details));
-        dd('thành công . cập nhật ok !!!!!!!!!!!!!!!!');
+        dd('Nguyễn duy tú');
         //dd(config('aleypay.sandbox.apiKey'));
         // $data['tokenKey'] = 'mz7yS4yVognq5UsUlbJq8vWXc9KwEB';
         // $checksumKey = 's7UlvRCqTieXyA9UXoo2R9IJQ4W62p';
