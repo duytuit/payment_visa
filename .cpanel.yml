@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/ladipage/public_html/
-    - /bin/cp -rf payment_visa $DEPLOYPATH
+    - /bin/cp -rf $DEPLOYPATH
