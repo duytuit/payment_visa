@@ -38,8 +38,8 @@ class SendEmailJob implements ShouldQueue
        // $html = view('template-mail.'.$template, compact('details'))->render();
         Mail::send('template-mail.'.$template,$details,function($message)use($details){
             $message->to($details['email'])
-                    ->subject($details['subject'])
-                    ->from('noreply@ladipagebds.com',$details['email_name']);
+                    ->subject($details['subject']);
+                    // ->from('noreply@ladipagebds.com',$details['email_name']);
                     // ->subject('Welcome to the Tutorials Point');
                     // ->to('email@example.com', 'Mr. Example');
                     // ->sender('email@example.com', 'Mr. Example');
