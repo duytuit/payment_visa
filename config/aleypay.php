@@ -5,7 +5,7 @@ return [
      * The host to use when listening for debug server connections.
      */
     'host' => 'tcp://127.0.0.1:9912',
-    'sumery' => 25,
+    'sumery' => 200,
     'domainLogoBank' => 'https://alepay.vn/dataimage',
     'live' =>[
         'domain' => 'https://alepay-v3.nganluong.vn/api/v3/checkout',

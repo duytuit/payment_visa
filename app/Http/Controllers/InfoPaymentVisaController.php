@@ -153,6 +153,7 @@ class InfoPaymentVisaController extends Controller
         if($request->bankCode){
            $info_bank = json_decode($request->bankCode);
         }
+       
         $data=[
             'orderCode' => $info_visa->code,
             'customMerchantId' => Str::uuid()->toString(),
@@ -165,6 +166,7 @@ class InfoPaymentVisaController extends Controller
             // 'bankCode' => @$info_bank->bankCode,
             // 'paymentMethod' => @$info_bank->methodCode,
             'cancelUrl' =>((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http"). "://". @$_SERVER['HTTP_HOST'].config('aleypay.live.callbackUrl'),
+            'returnUrl' =>((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http"). "://". @$_SERVER['HTTP_HOST'].config('aleypay.live.callbackUrl'),
             'buyerName' => $info_visa->full_name,
             'buyerEmail' => $info_visa->email,
             'buyerPhone' => $info_visa->phone,
@@ -172,10 +174,14 @@ class InfoPaymentVisaController extends Controller
             'buyerCity' => Utils::city_province[$info_visa->city_province],
             'buyerCountry' => 'Việt Nam',
             'paymentHours' => 48,
-            'allowDomestic' => true,
-            // 'month' => 3,
             'language' => 'vi'
         ];
+        if((int)$request->checkoutType == 2){
+            $data['month'] = 0;
+            $data['allowDomestic'] = false;
+        }else{
+            $data['allowDomestic'] = true;
+        }
         // send notify email admin
         $list_mail = config('mail.email_admin');
         $list_mail[] = $info_visa->email;

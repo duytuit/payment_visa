@@ -47,7 +47,7 @@
                 {{-- @php
                     dd(Session::get('screen'));
                 @endphp --}}
-                <div class="row setup-content" id="step-1" style="display: none;">
+                <div class="row setup-content" id="step-1">
                     <h4>Fulfill foreigner’s information</h4>
                     <h5>Foreigner's images</h5>
                     <section>
@@ -386,7 +386,7 @@
                        <input type="submit" value="Review application form" class="btn submit" style="cursor: pointer">
                     </div>
                 </div>
-                <div class="row setup-content" id="step-2">
+                <div class="row setup-content" id="step-2" style="display: none;">
                     <h4>Fulfill foreigner’s information</h4>
                     <h5>Foreigner's images</h5>
                     <section>
@@ -1033,7 +1033,7 @@
         });
         $(document).ready(function () {
           var data_info =  window.localStorage.getItem("data_info");
-           if(data_info != 'null'){
+           if(data_info && data_info != 'null'){
                 data_info = JSON.parse(data_info);
                 $('#step-2').show();
                 $('#step-1').hide();
