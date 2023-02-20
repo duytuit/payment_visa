@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use App\Models\InfoPaymentVisa\InfoPaymentVisa;
+use App\Models\InfoPaymentVisa\transactionPayment;
 use DateTime;
 use Illuminate\Support\Str;
 
@@ -60,8 +61,18 @@ class InfoPaymentVisaController extends Controller
     }
     public function callback(Request $request)
     {
-        dd($request->all());
-        return view('callback_result');
+        $input = $request->all();
+        $transaction_payment = transactionPayment::where('transaction_code',$request->transactionCode)->first();
+        $data['errorCode'] = $request->errorCode;
+        $data['transaction_code'] = $request->transactionCode;
+        if($transaction_payment){
+            $transaction_payment->status = $request->errorCode;
+            $transaction_payment->response = json_encode($input);
+            $transaction_payment->save();
+            $data['info_payment'] = InfoPaymentVisa::find($transaction_payment->info_payment_id);
+            $data['transaction_payment'] = $transaction_payment;
+        }
+        return view('callback_result',$data);
     }
     public function store(Request $request)
     {
@@ -99,6 +110,7 @@ class InfoPaymentVisaController extends Controller
                 'email' => $request->email ?? 'tund@dxmb.vn',
                 'passport_number' => $request->passport_number ?? '3462934788',
                 'passport_type' => $request->passport_type ?? 'CV',
+                'amount' => $request->amount,
                 'expiry_date' => '2023-12-12', //$request->expiry_date ? date('Y-m-d',strtotime($request->expiry_date)) : null,
                 // 'intended_length_of_stay_in_vn ' => $request->intended_length_of_stay_in_vn,
                 'intended_date_of_entry'=> '2024-12-12', //$request->intended_date_of_entry ? date('Y-m-d',strtotime($request->intended_date_of_entry)) : null,
@@ -148,7 +160,7 @@ class InfoPaymentVisaController extends Controller
             'currency' => 'VND',
             'orderDescription' => 'E Visa',
             'totalItem' => 1,
-            'checkoutType' => (int)$request->checkoutType,
+            'checkoutType' =>(int)$request->checkoutType,
             'installment' => false,
             // 'bankCode' => @$info_bank->bankCode,
             // 'paymentMethod' => @$info_bank->methodCode,
@@ -178,14 +190,18 @@ class InfoPaymentVisaController extends Controller
             "address_customer"=>$info_visa->address,
             "amount_customer"=> number_format($request->amount)
         ];
-        dispatch(new SendEmailJob($details));
-       
+        //dispatch(new SendEmailJob($details));
         // send notify telegram admin
         dBug::trackingInfo($details);
         // send notify email customer
-       
         $result = $this->sendOrderV3($data);
-        
+        transactionPayment::create([
+         'info_payment_id'=>$info_visa->id,
+         'code'=>$result->code,
+         'amount'=>$request->amount,
+         'transaction_code'=>$result->transactionCode,
+         'message'=>$result->message
+        ]);
         return response()->json(['status' => true, 'message' => 'insert data success.', 'data' => $result], 200);
     }
     private function convertUsdToVnd()

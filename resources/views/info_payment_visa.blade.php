@@ -372,6 +372,7 @@
                                 <span><a href="javascript:;" class="reset_capcha"><img width="20" height="20" src="{{ asset('images/refresh.png') }}" title="Delete"></a></span>
                                 <div class="col-sm-7" style="margin-top: 10px;">
                                     <input type="text" class="form-control" name="captcha">
+                                    <input type="hidden" name="amount" value="{{$sumery*$currency}}">
                                 </div>
                             </div>
                             <div class="col-sm-6" style="margin-top: 10px;display: flex;">
