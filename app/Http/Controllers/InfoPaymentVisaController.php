@@ -176,10 +176,10 @@ class InfoPaymentVisaController extends Controller
             'paymentHours' => 48,
             'language' => 'vi'
         ];
-        if((int)$request->checkoutType == 2){
+        if((int)$request->checkoutType == 2){  // thanh toán trả góp
             $data['month'] = 0;
             $data['allowDomestic'] = false;
-        }else{
+        }else{                                // thanh toán thường
             $data['allowDomestic'] = true;
         }
         // send notify email admin
