@@ -186,7 +186,7 @@
                                 <tr> 
                                     <td style="padding:30px 20px 0px 20px;vertical-align:middle;line-height:20px;font-family:Arial;background-color:#ffffff;text-align:left"> 
                                         <div>
-                                            <a href="#">Nhấn vào đây để trở về trang chủ</a>
+                                            <a href="/">Nhấn vào đây để trở về trang chủ</a>
                                         </div>
                                     </td> 
                                 </tr>
