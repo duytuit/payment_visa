@@ -32,8 +32,8 @@ class InfoPaymentVisaController extends Controller
      */
     public function list()
     {
-        $infovisas = InfoPaymentVisa::paginate(15);  
-        return view('admin.infovisa.list', compact('infovisas')); 
+        $infovisas = InfoPaymentVisa::paginate(15);
+        return view('admin.infovisa.list', compact('infovisas'));
     }
     /**
      * Show the application dashboard.
@@ -48,7 +48,8 @@ class InfoPaymentVisaController extends Controller
         $data['entry_through_checkpoint'] = Utils::entry_through_checkpoint;
         $data['purpose_of_entry'] = Utils::purpose_of_entry;
 
-        $data['captcha_src'] = '/captcha'.explode('captcha',captcha_src())[1] ;
+        $data['captcha_src'] = captcha_src();
+//        $data['captcha_src'] = '/captcha'.explode('captcha',captcha_src())[1] ;
         $data['sumery'] = config('aleypay.sumery');
         $data['currency'] = 23534;//$this->convertUsdToVnd()->result;
         $data['logoBankATM'] = Utils::list_bank_atm;
@@ -85,12 +86,12 @@ class InfoPaymentVisaController extends Controller
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
                 return response()->json([ 'status' => false,'message' => $validator->errors()->first()], 402);
-            } 
+            }
             if(!$request->checkbox){
                 return response()->json([ 'status' => false,'message' => 'Please accept the terms.Please check box'], 402);
             }
             $check = \Captcha::check($request->captcha);
-           
+
             if($check){
                // lưu vào db
                $datetime = Carbon::now();
@@ -140,7 +141,7 @@ class InfoPaymentVisaController extends Controller
            // chưa có chỗ để lưu
            return response()->json([ 'status' => false,'message' => 'insert data error.'.$th->getMessage()], 402);
         }
-       
+
     }
     public function payment(Request $request)
     {
@@ -153,7 +154,7 @@ class InfoPaymentVisaController extends Controller
         if($request->bankCode){
            $info_bank = json_decode($request->bankCode);
         }
-       
+
         $data=[
             'orderCode' => $info_visa->code,
             'customMerchantId' => Str::uuid()->toString(),
