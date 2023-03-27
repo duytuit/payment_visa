@@ -47,17 +47,14 @@ class InfoPaymentVisaController extends Controller
         $data['current_nationality'] = Utils::current_nationality;
         $data['entry_through_checkpoint'] = Utils::entry_through_checkpoint;
         $data['purpose_of_entry'] = Utils::purpose_of_entry;
-
-        $data['captcha_src'] = captcha_src();
-//        $data['captcha_src'] = '/captcha'.explode('captcha',captcha_src())[1] ;
+        $data['captcha_src'] = Utils::generateCaptcha();
         $data['sumery'] = config('aleypay.sumery');
         $data['currency'] = 23534;//$this->convertUsdToVnd()->result;
         $data['logoBankATM'] = Utils::list_bank_atm;
         $data['logoBankTransferOnline'] = Utils::list_bank_transfer_online;
         $data['logoBankQRcode'] = Utils::list_bank_qr_code;
         $data['logoBankVA'] = Utils::list_bank_va;
-         //$_SESSION["screen"] = $_SESSION["screen"]??1;
-        // Session::put('screen',Session::get('screen')??1);
+        $data['get_session'] = Session::get('captcha');
         return view('info_payment_visa',$data);
     }
     public function callback(Request $request)
@@ -80,7 +77,6 @@ class InfoPaymentVisaController extends Controller
         // Session::put('screen', 2);
         try {
             $rules = [
-                'captcha' => 'required|captcha',
                 'full_name' => 'required'
             ];
             $validator = Validator::make($request->all(), $rules);
@@ -90,9 +86,11 @@ class InfoPaymentVisaController extends Controller
             if(!$request->checkbox){
                 return response()->json([ 'status' => false,'message' => 'Please accept the terms.Please check box'], 402);
             }
-            $check = \Captcha::check($request->captcha);
+            $session = Session::get('captcha');
 
-            if($check){
+            if(!$session || strcmp($session,$request->captcha) !=0){
+                return response()->json([ 'status' => false,'message' => 'Captcha Invalid'], 402);
+            }
                // lưu vào db
                $datetime = Carbon::now();
                $info_visa = InfoPaymentVisa::create([
@@ -134,12 +132,9 @@ class InfoPaymentVisaController extends Controller
                 $info_visa->alowed_to_entry_throuth_checkpoint = Utils::entry_through_checkpoint[$info_visa->alowed_to_entry_throuth_checkpoint];
                 dBug::trackingInfo($info_visa);
                 return response()->json(['status' => true, 'message' => 'insert data success.', 'data' => $info_visa], 200);
-            }else{
-                return response()->json([ 'status' => false,'message' => 'captcha invalid'], 402);
-            }
         } catch (\Exception $th) {
            // chưa có chỗ để lưu
-           return response()->json([ 'status' => false,'message' => 'insert data error.'.$th->getMessage()], 402);
+           return response()->json([ 'status' => false,'message' => 'insert data error.'.$th->getMessage().$th->getLine()], 402);
         }
 
     }

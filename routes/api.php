@@ -21,4 +21,5 @@ Route::prefix('dev')->name('api.v1.')->group(function () {
     Route::get('/test', 'API\DevController@test')->name('dev.test');
     Route::get('/install_command', 'API\DevController@install_command')->name('dev.install_command');
     Route::get('/install_command_migrate', 'API\DevController@install_command_migrate')->name('dev.install_command_migrate');
+    Route::get('/generate_captcha', 'API\DevController@generateCaptcha')->name('dev.generateCaptcha');
 });

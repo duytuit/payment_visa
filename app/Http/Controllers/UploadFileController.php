@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Utils;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -76,7 +77,7 @@ class UploadFileController extends Controller
     }
     public function reset_captcha(Request $request)
     {
-        $captcha = '/captcha'.explode('captcha',captcha_src())[1] ;
+        $captcha = Utils::generateCaptcha() ;
         return  response()->json(['success'=>true,'message'=>$captcha],200);
     }
 }

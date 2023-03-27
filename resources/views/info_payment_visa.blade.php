@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Info Visa</title>
-    
+
     <!-- Bootstrap -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 
@@ -18,7 +18,7 @@
     <link href="/wp/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/wp/bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
     <link href="/css/default.css?v={{ date('YmdHisss', time()) }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('wp/css/toastr.min.css') }}">  
+    <link rel="stylesheet" href="{{ asset('wp/css/toastr.min.css') }}">
 </head>
 
 <body>
@@ -280,8 +280,8 @@
                                             </td>
                                             <td>
                                                 <div class="row-fluid">
-                                                    <div class="span6"> 
-                                                        <label class="radio-inline"> 
+                                                    <div class="span6">
+                                                        <label class="radio-inline">
                                                            <input type="radio" class="sex_radio_child"  name="sex_child_1" checked value="1" checked="checked">
                                                             Male
                                                         </label>
@@ -311,7 +311,7 @@
                                                     <a href="javascript:;" class="remove_item"> <img width="20" height="20" src="{{ asset('images/e_delete.png') }}" title="Delete"> </a>
                                                 </div>
                                             </td>
-                                        </tr> 
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -419,21 +419,21 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="birthday">Date of birth
-                                    (DD/MM/YYYY) 
+                                    (DD/MM/YYYY)
                                 </div>
                                 <div class="col-sm-8">
                                     <p class="step_2_birthday"></p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-4 text_left" for="nationality">Current nationality 
+                                <div class="col-sm-4 text_left" for="nationality">Current nationality
                                 </div>
                                 <div class="col-sm-8">
                                     <p class="step_2_nationality"></p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-4 text_left" for="religion">Religion 
+                                <div class="col-sm-4 text_left" for="religion">Religion
                                 </div>
                                 <div class="col-sm-8">
                                     <p class="step_2_religion"></p>
@@ -447,7 +447,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-4 text_left" for="passport_number">Passport number 
+                                <div class="col-sm-4 text_left" for="passport_number">Passport number
                                 </div>
                                 <div class="col-sm-8">
                                     <p class="step_2_passport_number"></p>
@@ -455,7 +455,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="expiry_date">Expiry date
-                                    (DD/MM/YYYY) 
+                                    (DD/MM/YYYY)
                                 </div>
                                 <div class="col-sm-8">
                                     <p class="step_2_expiry_date"></p>
@@ -464,7 +464,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="intended_length_of_stay_in_vn">Intended length of stay in
-                                    Viet Nam (number of days) 
+                                    Viet Nam (number of days)
                                 </div>
                                 <div class="col-sm-8">
                                     <p class="step_2_intended_length_of_stay_in_vn"></p>
@@ -473,7 +473,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="intended_temporaty_residential_address_in_vn">Intended temporary
-                                    residential address in Viet Nam 
+                                    residential address in Viet Nam
                                 </div>
                                 <div class="col-sm-8">
                                     <p class="step_2_intended_temporaty_residential_address_in_vn"></p>
@@ -515,7 +515,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 text_left" for="intended_date_of_entry">Intended date of entry
-                                    (DD/MM/YYYY) 
+                                    (DD/MM/YYYY)
                                 </div>
                                 <div class="col-sm-8">
                                     <p class="step_2_intended_date_of_entry"></p>
@@ -523,7 +523,7 @@
 
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-4 text_left" for="purpose_of_entry">Purpose of entry 
+                                <div class="col-sm-4 text_left" for="purpose_of_entry">Purpose of entry
                                 </div>
                                 <div class="col-sm-8">
                                     <p class="step_2_purpose_of_entry"></p>
@@ -694,7 +694,7 @@
                             <div class="panel panel-default">
                                 <div id="atm-card" class="panel-collapse">
                                     <div class="panel-body form_option">
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -706,16 +706,16 @@
         </div>
     </main>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="/js/jquery-3.4.1.min.js"></script>      
+    <script src="/js/jquery-3.4.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/wp/bower_components/moment/moment.js"></script>   
-    <script src="/wp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>   
-    <script src="/js/bootstrap-datetimepicker.min.js"></script>   
-    <script src="/js/form-validation.js"></script>   
-    <script src="/js/jquery.easydropdown.js"></script>   
-    <script src="/wp/bower_components/select2/dist/js/select2.min.js"></script>   
-    <script src="/js/main.js?v=3"></script> 
-    <script src="{{ asset('wp/js/toastr.min.js') }}"></script>  
+    <script src="/wp/bower_components/moment/moment.js"></script>
+    <script src="/wp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/form-validation.js"></script>
+    <script src="/js/jquery.easydropdown.js"></script>
+    <script src="/wp/bower_components/select2/dist/js/select2.min.js"></script>
+    <script src="/js/main.js?v=3"></script>
+    <script src="{{ asset('wp/js/toastr.min.js') }}"></script>
     <script>
         document.getElementById('valForm').validateForm();
         $.ajaxSetup({
@@ -723,16 +723,16 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
             }
         });
-        $('.prev_form').click(function (e) { 
+        $('.prev_form').click(function (e) {
             previousForm(this);
         })
-        $('.submit').click(function (e) { 
+        $('.submit').click(function (e) {
             let selecter = this;
             e.preventDefault();
             showLoading();
             var list_child_items = [];
             $('.list_child ._item_child').each(function(){
-                               
+
                 let fullname_child = $(this).find("input[name='fullname_child']").val();
                 let sex_child = $(this).find('.sex_radio_child:radio:checked').val();
                 let birthday_child = $(this).find("input[name='birthday_child']").val();
@@ -744,9 +744,9 @@
                         birthday_child: birthday_child,
                         image_avatar_child: image_avatar_child
                 });
-              
+
             })
-           
+
         //    console.log('child'+JSON.stringify(list_child_items));
             var form_data = new FormData($('#valForm')[0]);
             if(list_child_items.length > 0){
@@ -757,7 +757,7 @@
                     type: 'POST',
                     data: form_data,
                     contentType: false,
-                    processData: false, 
+                    processData: false,
                     success: function (response) {
                         hideLoading();
                         // console.log(response.data);
@@ -843,7 +843,7 @@
                     }
             });
         });
-        $('.create_payment').click(function (e) { 
+        $('.create_payment').click(function (e) {
             e.preventDefault();
             window.localStorage.setItem("data_info",null);
             showLoading();
@@ -861,7 +861,7 @@
                     type: 'POST',
                     data: form_data_payment,
                     contentType: false,
-                    processData: false, 
+                    processData: false,
                     success: function (response) {
                         hideLoading();
                         if (response.status == true && response.data.checkoutUrl) {
@@ -876,7 +876,7 @@
                     }
                 });
         });
-        $('.next').click(function (e) { 
+        $('.next').click(function (e) {
             e.preventDefault();
             nextForm(this);
         });
@@ -888,7 +888,7 @@
         });
         $('#image_footer,#image_footer_passport').on('change', function(e) {
             let check = $(this).data('name');
-           
+
             var form_data = new FormData();
             form_data.append('attach_file', e.target.files[0]);
             if (e.target.files[0]) {
@@ -958,7 +958,7 @@
             }
         }
         var count = 1;
-        $('.add_chilrent').click(function (e) { 
+        $('.add_chilrent').click(function (e) {
             e.preventDefault();
             count +=1;
             var html = ' <tr class="_item_child">'+
@@ -1014,7 +1014,7 @@
             count -=1;
             $(this).parents("._item_child").remove();
         });
-        $('.reset_capcha').click(function (e) { 
+        $('.reset_capcha').click(function (e) {
             e.preventDefault();
             $.ajax({
                     url: '/reset/captcha',
