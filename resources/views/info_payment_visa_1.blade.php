@@ -769,7 +769,7 @@
         showLoading();
         var form_data = new FormData($('#valForm')[0]);
         $.ajax({
-            url: 'v2/transaction/payment',
+            url: 'api/v2/transaction/payment',
             type: 'POST',
             data: form_data,
             contentType: false,
