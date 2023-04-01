@@ -100,6 +100,8 @@ Route::prefix('admin')->group(function () {
 
     });
 });
+
+
 Route::post('payment/info', 'InfoPaymentVisaController@store')->name('payment.store');
 Route::post('transaction/payment', 'InfoPaymentVisaController@payment')->name('transaction.payment');
 Route::get('transaction/result', 'InfoPaymentVisaController@callback')->name('transaction.callback');
