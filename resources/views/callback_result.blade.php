@@ -16,7 +16,7 @@
     <link href="/css/easydropdown.css" rel="stylesheet">
     <link href="/wp/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/wp/bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
-    <link href="/css/default.css?v=3" rel="stylesheet">
+    <link href="/css/default.css?v=4" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('wp/css/toastr.min.css') }}">
 </head>
 
