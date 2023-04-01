@@ -15,7 +15,7 @@ use App\Models\InfoPaymentVisa\transactionPayment;
 use DateTime;
 use Illuminate\Support\Str;
 
-class InfoPaymentVisaController extends Controller
+class RegisterJudicialCertificationController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -55,24 +55,7 @@ class InfoPaymentVisaController extends Controller
         $data['logoBankQRcode'] = Utils::list_bank_qr_code;
         $data['logoBankVA'] = Utils::list_bank_va;
         $data['get_session'] = Session::get('captcha');
-        return view('info_payment_visa',$data);
-    }
-    public function index2()
-    {
-        $data['passport_type'] = Utils::passport_type;
-        $data['city_province'] = Utils::city_province;
-        $data['current_nationality'] = Utils::current_nationality;
-        $data['entry_through_checkpoint'] = Utils::entry_through_checkpoint;
-        $data['purpose_of_entry'] = Utils::purpose_of_entry;
-        $data['captcha_src'] = Utils::generateCaptcha();
-        $data['sumery'] = config('aleypay.sumery');
-        $data['currency'] = 23534;//$this->convertUsdToVnd()->result;
-        $data['logoBankATM'] = Utils::list_bank_atm;
-        $data['logoBankTransferOnline'] = Utils::list_bank_transfer_online;
-        $data['logoBankQRcode'] = Utils::list_bank_qr_code;
-        $data['logoBankVA'] = Utils::list_bank_va;
-        $data['get_session'] = Session::get('captcha');
-        return view('info_payment_visa_1',$data);
+        return view('register_judicial_certification',$data);
     }
     public function callback(Request $request)
     {

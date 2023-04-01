@@ -24,7 +24,7 @@ according to position
 .styled-checkbox {
     position: relative;
   }
-  
+
   .styled-checkbox label {
     position: relative;
     cursor: pointer;
@@ -32,7 +32,7 @@ according to position
     margin-right: 15px;
     padding-left: 35px;
   }
-  
+
   .styled-checkbox label:after {
     content: '';
     position: absolute;
@@ -46,7 +46,7 @@ according to position
     left: 0px;
     margin: auto;
   }
-  
+
   .styled-checkbox input[type=checkbox] {
     position: absolute;
     top: auto;
@@ -55,53 +55,53 @@ according to position
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   }
-  
+
   .styled-checkbox input[type=checkbox]+label:after {
     background-position: -55px 0;
   }
-  
+
   .styled-checkbox input[type=checkbox]+label:hover:after {
     background-position: -79px 0;
   }
-  
+
   .styled-checkbox input[type=checkbox]:focus+label:after,
   .styled-checkbox input[type=checkbox]:focus+label:after,
   .styled-checkbox input[type=checkbox]:active+label:after,
   .styled-checkbox input[type=checkbox]:active+label:after {
     background-position: -79px 0;
   }
-  
+
   .styled-checkbox input[type=checkbox]:checked+label:after {
     background-position: -103px 0;
   }
-  
+
   .styled-checkbox input[type=checkbox]:checked+label:hover:after,
   .styled-checkbox input[type=checkbox]:checked+label:focus:after {
     background-position: -176px 0;
   }
-  
+
   .styled-checkbox input[type=checkbox]:checked:focus+label:after {
     background-position: -176px 0;
   }
-  
+
   .styled-checkbox input[type=checkbox]:disabled+label:after {
     background-position: -127px 0;
   }
-  
+
   .styled-checkbox input[type=checkbox]:disabled:checked+label:after {
     background-position: -150px 0;
   }
-  
+
   /*
   How to use It:
-  
+
   You need an sprite image that shows different states for radio.
   And then you have to define positions for each state in variables.
-  
+
   The image icon added as background for css:after selector and add padding to label
-  
+
   You can apply your custom style to wrapper div
-  
+
   Variables description:
   w: width for single state of radio
   h: height for single state of radio
@@ -118,7 +118,7 @@ according to position
   .styled-radio {
     position: relative;
   }
-  
+
   .styled-radio label {
     position: relative;
     cursor: pointer;
@@ -126,7 +126,7 @@ according to position
     margin-right: 15px;
     padding-left: 35px;
   }
-  
+
   .styled-radio label:after {
     content: '';
     position: absolute;
@@ -140,7 +140,7 @@ according to position
     left: 0px;
     margin: auto;
   }
-  
+
   .styled-radio input[type=radio] {
     position: absolute;
     top: 0px;
@@ -149,91 +149,91 @@ according to position
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   }
-  
+
   .styled-radio input[type=radio]+label:after {
     background-position: -200px center;
   }
-  
+
   .styled-radio input[type=radio]+label:hover:after {
     background-position: -224px center;
   }
-  
+
   .styled-radio input[type=radio]:focus+label:after,
   .styled-radio input[type=radio]:focus+label:after,
   .styled-radio input[type=radio]:active+label:after,
   .styled-radio input[type=radio]:active+label:after {
     background-position: -200px center;
   }
-  
+
   .styled-radio input[type=radio]:checked+label:after {
     background-position: -248px center;
   }
-  
+
   .styled-radio input[type=radio]:checked+label:hover:after,
   .styled-radio input[type=radio]:checked+label:focus:after {
     background-position: -324px center;
   }
-  
+
   .styled-radio input[type=radio]:checked:focus+label:after {
     background-position: -324px center;
   }
-  
+
   .styled-radio input[type=radio]:disabled+label:after {
     background-position: -272px center;
   }
-  
+
   .styled-radio input[type=radio]:disabled:checked+label:after {
     background-position: -296px center;
   }
-  
+
   body {
     font-family: 'Roboto', sans-serif;
   }
-  
+
   form {
     box-shadow: 0 0px 13px rgba(60, 63, 125, 0.2);
     padding: 20px 68px 20px 68px;
     margin-bottom: 20px;
   }
-  
+
   @media screen and (max-width: 640px) {
     form {
       padding: 20px 25px 30px;
     }
   }
-  
+
   form fieldset {
     clear: both;
   }
-  
+
   form fieldset legend {
     color: #0e5273;
     border-bottom: 1px solid #0e5273;
     margin-bottom: 30px;
   }
-  
+
   form .form-group {
     position: relative;
     width: 100%;
     float: left;
   }
-  
+
   form .form-group .dropdown {
     width: 100%;
   }
-  
+
   form .form-group .dropdown .carat {
     -webkit-transition: .15s ease-out;
     -moz-transition: .15s ease-out;
     -o-transition: .15s ease-out;
     transition: .15s ease-out;
   }
-  
+
   form .form-group .dropdown .selected {
     position: relative;
     padding-left: 35px;
   }
-  
+
   form .form-group .dropdown .selected:before {
     content: '';
     display: block;
@@ -242,53 +242,53 @@ according to position
     margin: auto;
     left: 10px;
   }
-  
+
   form .form-group .dropdown .selected[data-type="message"] {
     padding-left: 15px;
   }
-  
+
   form .form-group .dropdown .selected[data-type="message"]:before {
     display: none;
   }
-  
+
   form .form-group .dropdown .selected[data-type="demo1"]:before {
     content: url(icons/Beauty_saloon.png);
   }
-  
+
   form .form-group .dropdown .selected[data-type="demo2"]:before {
     content: url(icons/Cars.png);
   }
-  
+
   form .form-group .dropdown .selected[data-type="demo3"]:before {
     content: url(icons/Library.png);
   }
-  
+
   form .form-group .dropdown .selected[data-type="demo4"]:before {
     content: url(icons/ticket.png);
   }
-  
+
   form .form-group .dropdown .selected[data-type="demo5"]:before {
     content: url(icons/tools.png);
   }
-  
+
   form .form-group .dropdown .selected[data-type="demo6"]:before {
     content: url(icons/Tyres.png);
   }
-  
+
   form .form-group .dropdown div {
     border-radius: 0 0 7px 7px;
   }
-  
+
   form .form-group .dropdown ul {
     padding-left: 0;
     border-radius: 3px;
   }
-  
+
   form .form-group .dropdown ul li {
     position: relative;
     padding-left: 35px;
   }
-  
+
   form .form-group .dropdown ul li:before {
     position: absolute;
     width: 35px;
@@ -296,68 +296,68 @@ according to position
     left: 10px;
     top: 8px;
   }
-  
+
   form .form-group .dropdown ul li[data-type="message"] {
     padding-left: 15px;
   }
-  
+
   form .form-group .dropdown ul li[data-type="message"]:before {
     display: none;
   }
-  
+
   form .form-group .dropdown ul li[data-type="demo1"]:before {
     content: url(icons/Beauty_saloon.png);
   }
-  
+
   form .form-group .dropdown ul li[data-type="demo2"]:before {
     content: url(icons/Cars.png);
   }
-  
+
   form .form-group .dropdown ul li[data-type="demo3"]:before {
     content: url(icons/Library.png);
   }
-  
+
   form .form-group .dropdown ul li[data-type="demo4"]:before {
     content: url(icons/ticket.png);
   }
-  
+
   form .form-group .dropdown ul li[data-type="demo5"]:before {
     content: url(icons/tools.png);
   }
-  
+
   form .form-group .dropdown ul li[data-type="demo6"]:before {
     content: url(icons/Tyres.png);
   }
-  
+
   form .form-group .dropdown ul li.focus {
     background-color: #e3e3e3;
     color: #333333;
   }
-  
+
   form .form-group .form-control {
     height: auto;
   }
-  
+
   form .form-group .form-control.multi-select {
     height: 100px;
   }
-  
+
   @media screen and (max-width: 640px) {
     form .form-group .date .form-control {
       width: 100%;
     }
   }
-  
+
   form .form-group label {
     text-align: right;
   }
-  
+
   form .form-group textarea.form-control {
     height: 100px;
     border-radius: 4px;
     resize: none;
   }
-  
+
   form .form-group .popup {
     position: absolute;
     top: 7px;
@@ -366,20 +366,20 @@ according to position
     height: 19px;
     cursor: pointer;
   }
-  
+
   @media screen and (max-width: 640px) {
     /* form .form-group .popup {
       right: -17px;
     } */
   }
-  
+
   form .form-group .popup:before {
     content: url(icons/help.png);
     width: 19px;
     height: 19px;
     position: absolute;
   }
-  
+
   form .form-group .popup:after {
     content: '';
     width: 24px;
@@ -390,7 +390,7 @@ according to position
     top: -3px;
     left: -3px;
   }
-  
+
   form .form-group .popup span {
     display: none;
     position: absolute;
@@ -404,7 +404,7 @@ according to position
     top: -22px;
     font-size: 12px;
   }
-  
+
   form .form-group .popup span:before {
     content: url(icons/popup-left-arrow.png);
     position: absolute;
@@ -414,7 +414,7 @@ according to position
     left: -18px;
     height: 36px;
   }
-  
+
   @media screen and (max-width: 640px) {
     form .form-group .popup span {
       left: auto;
@@ -422,7 +422,7 @@ according to position
       top: 52px !important;
       width: 200px;
     }
-  
+
     form .form-group .popup span:before {
       bottom: auto;
       left: auto;
@@ -431,7 +431,7 @@ according to position
       transform: rotate(90deg);
     }
   }
-  
+
   form .form-group .popup:hover span,
   form .form-group .popup:focus span,
   form .form-group .popup:active span {
@@ -439,35 +439,35 @@ according to position
     -webkit-transition: border-radius 2s;
     transition: border-radius 2s;
   }
-  
+
   form .form-group .popup:focus,
   form .form-group .popup:active {
     outline: 0;
   }
-  
+
   form .form-group .popup:focus:after,
   form .form-group .popup:active:after {
     border: 2px solid #4D90FE;
   }
-  
+
   form .form-group .popup:focus span,
   form .form-group .popup:active span {
     outline: 0;
   }
-  
+
   form .form-group .popup:focus span:before,
   form .form-group .popup:active span:before {
     outline: 0;
   }
-  
+
   form .form-group .require span {
     color: red;
   }
-  
+
   form .form-group .multiple-select {
     height: 100px;
   }
-  
+
   form .form-group.styled-checkbox label,
   form .form-group.styled-radio label {
     padding-top: 0;
@@ -475,109 +475,109 @@ according to position
     display: block;
     text-align: left;
   }
-  
+
   form .form-group.select-wrap .focus.open {
     z-index: 10;
   }
-  
+
   form .form-group.select-wrap {
     z-index: 10;
   }
-  
+
   form .form-group.active {
     z-index: 11;
   }
-  
+
   form .form-group .dd-selected-text,
   form .form-group .dd-option-text {
     padding-top: 7px;
   }
-  
+
   form .form-group .dd-select .dd-selected-text {
     line-height: 20px !important;
   }
-  
+
   form .form-group .dd-options li a.dd-option .dd-option-text {
     line-height: 20px !important;
   }
-  
+
   form .has-error .form-control {
     background: url("icons/cross.png") no-repeat right 10px center;
   }
-  
+
   form .has-error .form-control.multiple-select {
     background: none;
   }
-  
+
   form .has-error .date input {
     border-right: 0;
   }
-  
+
   form .has-error .date .input-group-addon {
     color: #555;
     background-color: #eee;
     border-left: 1px solid #a94442;
   }
-  
+
   form .has-success .form-control {
     background: url("icons/tick.png") no-repeat right 10px center;
   }
-  
+
   form .has-success .form-control.multiple-select {
     background: none;
   }
-  
+
   form.variation2 .form-group .popup {
     top: 10px;
     right: -33px;
   }
-  
+
   form.variation3 {
     padding: 52px 120px 20px 35px;
   }
-  
+
   form.variation3 .form-group .popup {
     top: 10px;
     right: -33px;
   }
-  
+
   form.variation3 .form-group label {
     text-align: left;
     padding-left: 0;
   }
-  
+
   .styled-checkbox.has-error input[type=checkbox]+label:after {
     background-position: -30px 0;
   }
-  
+
   .buttons-group,
   .buttons-group input {
     margin-right: 15px;
     vertical-align: middle;
   }
-  
+
   .form-control {
     border-radius: 0;
   }
   .stepwizard-step p {
     margin-top: 10px;
   }
-  
+
   .stepwizard-row {
     display: table-row;
   }
-  
+
   .stepwizard {
     display: table;
     width: 100%;
     position: relative;
   }
-  
+
   .stepwizard-step button[disabled] {
     opacity: 1 !important;
     filter: alpha(opacity=100) !important;
   }
-  
+
   .stepwizard-row:before {
     top: 14px;
     bottom: 0;
@@ -586,15 +586,15 @@ according to position
     width: 100%;
     height: 1px;
     background-color: #ccc;
-  
+
   }
-  
+
   .stepwizard-step {
     display: table-cell;
     text-align: center;
     position: relative;
   }
-  
+
   .btn-circle {
   width: 30px;
   height: 30px;
@@ -620,7 +620,7 @@ according to position
     top: 0;
     z-index: 9998;
   }
-  
+
   #fade_loading {
     position: absolute;
     top: 35%;
@@ -759,3 +759,79 @@ ul.cardList li:hover .boxWrap {
       width: 15.5%;
   }
 }
+#preview_img_avatar{
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+}
+#preview_img_passport{
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+}
+.m-group-content{
+   width: 100%;
+}
+
+.nav-progress {
+    display: table;
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #253d61;
+    background-color: #f7f7f7;
+}
+.nav-progress > div {
+    position: relative;
+    display: table-cell;
+    padding: 14px 0;
+    color: #253d61;
+    text-align: center;
+    font-size: 1.125em;
+    line-height: 1.25em;
+}
+.nav-progress > div.complete {
+    background-color: #253d61;
+    color: #fff;
+}
+.nav-progress > div.complete .arrow {
+    border: 2px solid #253d61 !important;
+    background: #253d61 !important;
+}
+.nav-progress > div.active {
+    background-color: #253d61;
+    color: #fff;
+}
+.nav-progress > div.active .arrow {
+    background: #253d61 !important;
+}
+.arrow-wrapper {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.arrow-wrapper .arrow-cover {
+    position: absolute;
+    overflow: hidden;
+    width: 24px;
+    height: 50px;
+}
+.arrow-wrapper .arrow-cover .arrow {
+    position: absolute;
+    left: -34px;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #253d61;
+    background: transparent;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+

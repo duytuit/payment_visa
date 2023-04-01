@@ -748,7 +748,7 @@
             })
 
         //    console.log('child'+JSON.stringify(list_child_items));
-            var form_ var form_data = new FormData($('#valForm')[0]);data = new FormData($('#valForm')[0]);
+            var form_data = new FormData($('#valForm')[0]);
             if(list_child_items.length > 0){
                 form_data.append('list_child_items', JSON.stringify(list_child_items) );
             }
