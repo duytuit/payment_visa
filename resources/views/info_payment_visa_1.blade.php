@@ -33,7 +33,8 @@
             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
             <div class="nav-progress">
                 <div class="active">
-                    Register
+{{--                    Register--}}
+                    Step 1
                     <div class="arrow-wrapper">
                         <div class="arrow-cover">
                             <div class="arrow"></div>
@@ -41,7 +42,8 @@
                     </div>
                 </div>
                 <div>
-                    Confirm Payment
+{{--                    Confirm Payment--}}
+                    Step 2
                     <div class="arrow-wrapper">
                         <div class="arrow-cover">
                             <div class="arrow"></div>
@@ -49,11 +51,12 @@
                     </div>
                 </div>
                 <div>
-                    Approval Confirmation
+{{--                    Approval Confirmation--}}
+                    Step 3
                 </div>
             </div>
             <br>
-            <section class="c-form--step c-form--step__checkOk">
+            <section class="c-form--step c-form--step__active">
                 <div class="c-form--step__title">
                     <h3>Personal Details</h3>
                 </div>
@@ -180,13 +183,13 @@
                         </div>
                     </div>
                     <div class="m-group__actions m-group__full">
-                        <a class="btnNext m-button m-button__primary" id="btnNext4" href="#next4">
+                        <a class="btnNext m-button m-button__primary" id="btnNext1" data-section="1" href="#next1">
                             Next        <!-- Button arrow. Color filled via scss -->
                         </a>
                     </div>
                 </div>
             </section>
-            <section class="c-form--step c-form--step__active">
+            <section class="c-form--step">
                 <div class="c-form--step__title">
                     <h3>Passport Details</h3>
                 </div>
@@ -273,14 +276,14 @@
                         </div>
                     </div>
                     <div class="m-group__actions m-group__full">
-                        <a class="btnNext m-button m-button__primary" id="btnNext4" href="#next4">
+                        <a class="btnNext m-button m-button__primary" id="btnNext2" data-section="2" href="#next2">
                             Next        <!-- Button arrow. Color filled via scss -->
                         </a>
                     </div>
                 </div>
 
             </section>
-            <section class="c-form--step c-form--step__checkOk">
+            <section class="c-form--step">
                 <div class="c-form--step__title">
                     <h3>Contact Details</h3>
                 </div>
@@ -351,15 +354,15 @@
                         <div class="message_zone"></div>
                         <span class="m-group-content--description">Please select your country code and write your phone number without the country code</span>
                     </div>
-                    <div class="m-group__actions m-group__full hide">
-                        <a class="btnNext m-button m-button__primary" id="btnNext2">
+                    <div class="m-group__actions m-group__full">
+                        <a class="btnNext m-button m-button__primary" id="btnNext3" data-section="3" href="#next3">
                             Next
                         </a>
                     </div>
                 </div>
             </section>
 
-            <section class="c-form--step c-form--step__checkOk">
+            <section class="c-form--step">
                 <div class="c-form--step__title">
                     <h3>Accommodation Details during the trip</h3>
                 </div>
@@ -441,13 +444,13 @@
                         <div class="message_zone"></div>
                     </div>
                     <div class="m-group__actions m-group__full">
-                        <a class="btnNext m-button m-button__primary hide" id="btnNext4" href="#next4">
+                        <a class="btnNext m-button m-button__primary" id="btnNext4" data-section="4" href="#next4">
                             Next        <!-- Button arrow. Color filled via scss -->
                         </a>
                     </div>
                 </div>
             </section>
-            <section class="c-form--step c-form--step__checkOk">
+            <section class="c-form--step">
                 <div class="c-form--step__title">
                     <h3>Travel Details</h3>
                 </div>
@@ -521,7 +524,7 @@
                                     style="vertical-align: inherit;"><font
                                         style="vertical-align: inherit;"></font></font></span></label>
                         <div class="m-group__actions m-group__full">
-                            <a class="m-button m-button__primary" onclick="addChild()"  href="#next4">
+                            <a class="m-button m-button__primary" onclick="addChild()">
                                 Add Minor      <!-- Button arrow. Color filled via scss -->
                             </a>
                         </div>
@@ -562,13 +565,13 @@
                         </div>
                     </div>
                     <div class="m-group__actions m-group__full">
-                        <a class="btnNext m-button m-button__primary" id="btnNext3" href="#next3">
+                        <a class="btnNext m-button m-button__primary" id="btnNext5"  data-section="5" href="#next5">
                             Next
                         </a>
                     </div>
                 </div>
             </section>
-            <section class="c-form--step c-form--step__checkOk">
+            <section class="c-form--step">
                 <div class="c-form--step__title">
                     <h3>Payment details </h3>
                 </div>
@@ -631,12 +634,12 @@
                     </div>
                 </div>
                 <div class="m-group__actions m-group__full">
-                    <a class="btnNext m-button m-button__primary" id="btnNext4" href="#next4">
+                    <a class="btnNext m-button m-button__primary" id="btnNext6" data-section="6" href="#next6">
                         Next        <!-- Button arrow. Color filled via scss -->
                     </a>
                 </div>
             </section>
-            <section class="c-form--step c-form--step__checkOk">
+            <section class="c-form--step">
                 <div class="c-form--step__title">
                     <h3>Declaration of Applicant</h3>
                 </div>
@@ -667,8 +670,8 @@
                     </div>
                 </div>
                 <div class="m-group__actions m-group__full">
-                    <a class="btnNext m-button m-button__primary create_payment" id="btnNext4" href="#next4">
-                        Next        <!-- Button arrow. Color filled via scss -->
+                    <a class="m-button m-button__primary create_payment" id="btnNext7"  data-section="7" href="#next7">
+                        Continue        <!-- Button arrow. Color filled via scss -->
                     </a>
                 </div>
             </section>
@@ -744,6 +747,20 @@
                 removeMessageErrorCreate(classCreate);
             }
         });
+    }
+    $('.btnNext').click(function (){
+        step_OK($(this));
+    });
+    function step_OK(a) {
+        $(a).closest('section').addClass("c-form--step__checkOk");
+        let get_step = $(a).data('section');
+        //console.log(get_step)
+        if(get_step){
+            let get_section =  '#btnNext'+(parseInt(get_step)+1);
+            console.log(get_section)
+            $(get_section).closest('section').addClass("c-form--step__active");
+            $(a).hide();
+        }
     }
     $('.create_payment').click(function (e) {
         e.preventDefault();
