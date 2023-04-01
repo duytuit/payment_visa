@@ -35,9 +35,15 @@
                                 <tbody><tr>
                                     <td>
                                         <span class="site-logo-img">
-                                            <a href="https://visatravela.com/" class="sticky-custom-logo" rel="home" itemprop="url">
-                                                <img width="360" height="103" src="https://visatravela.com/wp-content/uploads/2021/09/visatravela-logo3.png" class="custom-logo" alt="" loading="lazy" srcset="https://visatravela.com/wp-content/uploads/2021/09/visatravela-logo3.png 360w, https://visatravela.com/wp-content/uploads/2021/09/visatravela-logo3-150x43.png 150w" sizes="(max-width: 360px) 100vw, 360px">
-                                            </a></span>
+                                            <a href="https://visatravela.com/" class="sticky-custom-logo" rel="home"
+                                               itemprop="url">
+                                                <img width="360" height="103"
+                                                     src="https://visatravela.com/wp-content/uploads/2021/09/visatravela-logo3.png"
+                                                     class="custom-logo" alt="" loading="lazy"
+                                                     srcset="https://visatravela.com/wp-content/uploads/2021/09/visatravela-logo3.png 360w, https://visatravela.com/wp-content/uploads/2021/09/visatravela-logo3-150x43.png 150w"
+                                                     sizes="(max-width: 360px) 100vw, 360px">
+                                            </a>
+                                        </span>
                                     </td>
                                     <td >
                                         <div style="vertical-align:middle;color:#999999;font-size:14px;line-height:17px;font-family:Gotham,'Helvetica Neue',Helvetica,Arial,sans-serif">Hotline:(Số máy lẻ 3024 hoặc 3029)</div>

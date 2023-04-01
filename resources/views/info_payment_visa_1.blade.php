@@ -760,6 +760,8 @@
             console.log(get_section)
             $(get_section).closest('section').addClass("c-form--step__active");
             $(a).hide();
+            const element = document.getElementById('btnNext'+(parseInt(get_step)+1));
+            element.scrollIntoView();
         }
     }
     $('.create_payment').click(function (e) {
