@@ -796,7 +796,7 @@ ul.cardList li:hover .boxWrap {
     color: #fff;
 }
 .nav-progress > div.complete .arrow {
-    border: 2px solid #253d61 !important;
+    border: 2px solid #ffffff !important;
     background: #253d61 !important;
 }
 .nav-progress > div.active {
